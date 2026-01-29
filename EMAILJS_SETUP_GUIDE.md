@@ -27,7 +27,7 @@ This guide will help you set up EmailJS to receive contact form submissions dire
 6. Grant EmailJS permission to send emails on your behalf
 7. Give your service a name (e.g., "Marcus Facilities Contact")
 8. Click **"Create Service"**
-9. **Copy the Service ID** - you'll need this later
+9. **Copy the Service ID** - you'll need this later (service_wqr84bo)
 
 ## Step 3: Create Email Template
 
@@ -136,6 +136,36 @@ When deploying to GitHub Pages:
    - Use `.env.example` as a template (without real values)
 
 ## Troubleshooting
+
+### **412 Gmail_API: Request had insufficient authentication scopes**
+
+This error means Gmail didn’t grant EmailJS enough permission to send mail. Fix it by reconnecting with the right scopes:
+
+1. **Reconnect your Gmail service in EmailJS**
+   - Go to [EmailJS Dashboard](https://dashboard.emailjs.com/) → **Email Services**
+   - Open your Gmail service
+   - Click **“Reconnect”** or **“Disconnect”** then **“Connect Account”** again
+   - When Google asks for permissions, **allow all requested permissions** (especially “Send email on your behalf”)
+   - Do **not** uncheck any boxes during the consent screen
+   - Finish the flow and save the service
+
+2. **If it still fails: revoke and reconnect**
+   - Go to [Google Account → Security → Third-party apps with account access](https://myaccount.google.com/permissions)
+   - Find **EmailJS** (or the app name used for the connection) and remove access
+   - In EmailJS Dashboard → Email Services → your Gmail service, click **Connect Account** again
+   - Sign in and grant **all** requested permissions when Google shows the consent screen
+
+3. **If you use 2‑Factor Authentication**
+   - Some users see 412 when 2FA is on. Try:
+     - Temporarily turning off 2FA, reconnecting in EmailJS, then turning 2FA back on, or
+     - Using an [App Password](https://support.google.com/accounts/answer/185833) for the Google account and reconnecting
+
+4. **Google Workspace (organization) accounts**
+   - Your admin may restrict third‑party app access. If 412 persists, ask your admin to allow the Gmail API / OAuth scope for sending mail, or use a personal Gmail account for the EmailJS service.
+
+After reconnecting, wait a minute and submit the form again. The 412 error should stop once Gmail has granted the send scope.
+
+---
 
 ### Emails not arriving?
 - Check your spam/junk folder
