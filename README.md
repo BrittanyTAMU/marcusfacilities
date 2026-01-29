@@ -2,7 +2,7 @@
 
 Professional website for Marcus Facilities, providing freeze-event safety and ice control services for Texas commercial and residential properties.
 
-## 🌟 Features
+## Features
 
 - **Responsive Design** - Works perfectly on desktop, tablet, and mobile devices
 - **ADA Compliant** - Built with accessibility in mind (WCAG 2.1 AA standards)
@@ -10,7 +10,7 @@ Professional website for Marcus Facilities, providing freeze-event safety and ic
 - **SEO Optimized** - Meta tags, structured data, and semantic HTML
 - **Fast Performance** - Optimized build with code splitting and asset optimization
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 
@@ -36,7 +36,7 @@ npm run dev
 
 The site will be available at `http://localhost:8080`
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 MarcusFac/
@@ -53,7 +53,7 @@ MarcusFac/
 └── docs/                # Documentation files
 ```
 
-## 🛠️ Available Scripts
+##  Available Scripts
 
 ```bash
 npm run dev          # Start development server with hot reload
@@ -64,7 +64,7 @@ npm test             # Run tests
 npm run deploy       # Deploy to GitHub Pages
 ```
 
-## 📧 Contact Form Setup
+##  Contact Form Setup
 
 The contact form uses EmailJS to send submissions directly to your email. To set it up:
 
@@ -77,7 +77,7 @@ The contact form uses EmailJS to send submissions directly to your email. To set
    ```
 3. Restart the development server
 
-## 🚀 Deployment
+##  Deployment
 
 ### GitHub Pages
 
@@ -93,14 +93,14 @@ npm run deploy
 
 Then enable GitHub Pages in your repository settings (Settings → Pages → Source: `gh-pages` branch).
 
-## 🛡️ Security
+##  Security
 
 - Environment variables (`.env`) are gitignored
 - EmailJS public keys are safe to expose (designed for client-side use)
 - Rate limiting recommended in EmailJS dashboard
 - All dependencies are regularly updated
 
-## 🎨 Tech Stack
+##  Tech Stack
 
 - **React 18** - UI framework
 - **TypeScript** - Type safety
@@ -110,16 +110,15 @@ Then enable GitHub Pages in your repository settings (Settings → Pages → Sou
 - **React Router** - Client-side routing
 - **EmailJS** - Email service integration
 
-## 📝 License
+##  License
 
 Copyright © 2025 Marcus Facilities LLC. All rights reserved.
 
-## 📞 Support
+##  Support
 
 For questions or issues:
-- Email: operations@marcusfacilities.com
-- Phone: (800) 000-0000
+- Email: sales@marcusfacilities.com
 
 ---
 
-**Built with ❄️ for Texas freeze event safety**
+**Built with love for Texas freeze event safety**

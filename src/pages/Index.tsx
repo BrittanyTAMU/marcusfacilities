@@ -15,11 +15,11 @@ const Index = () => {
         <title>Marcus Facilities | Freeze Event Safety & Ice Control Services in Texas</title>
         <meta
           name="description"
-          content="Professional freeze-event safety services for Texas HOAs, apartments, retail, and logistics properties. Pre-treatment, ice control, and 24/7 emergency response. Serving Houston, Dallas, Austin, San Antonio."
+          content="Professional freeze-event safety services for Texas HOAs, apartments, retail, and logistics properties. Pre-treatment, ice control, and 24/7 emergency response. Serving Dallas-Fort Worth."
         />
         <meta
           name="keywords"
-          content="HOA ice prevention Houston, commercial de-icing Austin, Texas ice hazard services, property slip-and-fall mitigation, apartment ice safety vendor, freeze event prevention Texas"
+          content="HOA ice prevention Dallas-Fort Worth, commercial de-icing DFW, Texas ice hazard services, property slip-and-fall mitigation, apartment ice safety vendor, freeze event prevention Texas"
         />
         <link rel="canonical" href="https://marcusfacilities.com" />
         
@@ -36,13 +36,9 @@ const Index = () => {
             "name": "Marcus Facilities",
             "description": "Professional freeze-event safety and ice control services for Texas properties",
             "url": "https://marcusfacilities.com",
-            "telephone": "+1-800-000-0000",
-            "email": "operations@marcusfacilities.com",
+            "email": "sales@marcusfacilities.com",
             "areaServed": [
-              { "@type": "City", "name": "Houston" },
-              { "@type": "City", "name": "Dallas" },
-              { "@type": "City", "name": "Austin" },
-              { "@type": "City", "name": "San Antonio" }
+              { "@type": "City", "name": "Dallas-Fort Worth" }
             ],
             "serviceType": ["Ice Control", "Freeze Event Prevention", "Pre-Treatment", "Emergency Response"],
             "priceRange": "$$"

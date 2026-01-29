@@ -30,11 +30,11 @@ export default function RetailServices() {
         <title>Commercial De-Icing Services Texas | Marcus Facilities</title>
         <meta
           name="description"
-          content="Professional ice control for Texas retail, medical, and commercial properties. Keep customers safe and businesses open during freeze events. Serving Houston, Dallas, Austin, San Antonio."
+          content="Professional ice control for Texas retail, medical, and commercial properties. Keep customers safe and businesses open during freeze events. Serving Dallas-Fort Worth."
         />
         <meta
           name="keywords"
-          content="commercial de-icing Austin, retail ice control Houston, medical facility freeze safety, shopping center de-icing Dallas, commercial property ice prevention Texas"
+          content="commercial de-icing Dallas-Fort Worth, retail ice control DFW, medical facility freeze safety, shopping center de-icing, commercial property ice prevention Texas"
         />
         <link rel="canonical" href="https://marcusfacilities.com/services/retail" />
       </Helmet>

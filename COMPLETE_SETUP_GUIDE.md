@@ -2,7 +2,7 @@
 
 This is your complete step-by-step guide to get your Marcus Facilities website from local development to live on GitHub Pages.
 
-## 📋 Prerequisites Checklist
+##  Prerequisites Checklist
 
 Before you start, make sure you have:
 - [ ] GitHub account created
@@ -12,7 +12,7 @@ Before you start, make sure you have:
 
 ---
 
-## 🚀 Complete Workflow (Do This First!)
+##  Complete Workflow (Do This First!)
 
 ### Step 1: Initialize Git Repository (If Not Already Done)
 
@@ -127,24 +127,36 @@ This will:
 
 ## 🔄 Making Updates (After Initial Setup)
 
-Whenever you make changes:
+**Yes — you need to add new changes to GitHub** so your live site and repo stay in sync. Here’s the flow:
+
+Whenever you make changes to the site:
 
 ```bash
-# 1. Make your changes to the code
+# 1. Make your changes in the code (edit files in your project)
 
-# 2. Test locally
+# 2. Test locally (optional but recommended)
 npm run dev
 
-# 3. Commit changes
+# 3. Stage all changed files
 git add .
+
+# 4. Commit with a short description
 git commit -m "Description of your changes"
 
-# 4. Push to GitHub
+# 5. Push to GitHub (updates your main branch)
 git push origin main
 
-# 5. Deploy updated site
+# 6. Deploy the updated site to GitHub Pages
 npm run deploy
 ```
+
+**Summary:**
+- **`git add .`** — stages your changes
+- **`git commit -m "message"`** — saves them with a message
+- **`git push origin main`** — sends commits to GitHub
+- **`npm run deploy`** — builds and pushes the site to the `gh-pages` branch so the live site updates
+
+After a few minutes, your GitHub Pages site will show the new version.
 
 ---
 

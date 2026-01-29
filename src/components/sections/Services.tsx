@@ -5,7 +5,7 @@ const services = [
   {
     icon: Thermometer,
     title: "Pre-Treatment",
-    description: "Applied before freeze events to prevent ice formation. Our brine solutions are effective down to 15°F.",
+    description: "Applied before freeze events to prevent ice formation. Our brine solutions are effective down to ~-20°F.",
   },
   {
     icon: Droplets,

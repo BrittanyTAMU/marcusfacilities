@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 
 const serviceAreas = [
-  "Houston",
   "Dallas-Fort Worth",
-  "Austin",
-  "San Antonio",
 ];
 
 const services = [
@@ -45,18 +42,11 @@ export function Footer() {
             </p>
             <div className="space-y-3">
               <a
-                href="tel:+1-800-000-0000"
-                className="flex items-center gap-2 text-base text-primary-foreground hover:text-accent transition-colors"
-              >
-                <Phone className="w-5 h-5" />
-                (800) 000-0000
-              </a>
-              <a
-                href="mailto:operations@marcusfacilities.com"
+                href="mailto:sales@marcusfacilities.com"
                 className="flex items-center gap-2 text-base text-primary-foreground hover:text-accent transition-colors"
               >
                 <Mail className="w-5 h-5" />
-                operations@marcusfacilities.com
+                sales@marcusfacilities.com
               </a>
             </div>
           </div>

@@ -198,26 +198,14 @@ export function Contact() {
               {/* Contact info */}
               <div className="space-y-4 mb-8">
                 <a
-                  href="tel:+1-800-000-0000"
-                  className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Phone className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-foreground text-base">(800) 000-0000</p>
-                    <p className="text-base">Mon–Fri 8am–6pm CST</p>
-                  </div>
-                </a>
-                <a
-                  href="mailto:operations@marcusfacilities.com"
+                  href="mailto:sales@marcusfacilities.com"
                   className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Mail className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-medium text-foreground text-base">operations@marcusfacilities.com</p>
+                    <p className="font-medium text-foreground text-base">sales@marcusfacilities.com</p>
                     <p className="text-base">We respond within 24 hours</p>
                   </div>
                 </a>
@@ -227,7 +215,7 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="font-medium text-foreground text-base">Service Areas</p>
-                    <p className="text-base">Houston • Dallas • Austin • San Antonio</p>
+                    <p className="text-base">Dallas-Fort Worth</p>
                   </div>
                 </div>
               </div>
@@ -241,7 +229,7 @@ export function Contact() {
                   Get early notifications before freeze events and priority scheduling for emergency response.
                 </p>
                 <Button variant="accent" size="sm" asChild>
-                  <a href="mailto:operations@marcusfacilities.com?subject=Priority%20Freeze%20List%20Signup">
+                  <a href="mailto:sales@marcusfacilities.com?subject=Priority%20Freeze%20List%20Signup">
                     Join the List
                   </a>
                 </Button>
@@ -293,7 +281,7 @@ export function Contact() {
                     <Label htmlFor="city">City</Label>
                     <Input
                       id="city"
-                      placeholder="Houston, Dallas, etc."
+                      placeholder="Dallas-Fort Worth area"
                       value={formData.city}
                       onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                       maxLength={100}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navigation = [
@@ -59,10 +59,6 @@ export function Header() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-4">
-          <a href="tel:+1-800-000-0000" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
-            <Phone className="w-4 h-4" />
-            <span>(800) 000-0000</span>
-          </a>
           <Button variant="accent" asChild>
             <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")}>Request Coverage</a>
           </Button>

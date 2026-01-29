@@ -28,7 +28,7 @@ import {
     },
     {
       question: "What areas in Texas do you serve?",
-      answer: "We currently serve the major metropolitan areas of Texas including Houston, Dallas-Fort Worth, Austin, and San Antonio, as well as surrounding communities. Contact us to confirm service availability for your specific location.",
+      answer: "We currently serve the Dallas-Fort Worth metroplex and surrounding communities. Contact us to confirm service availability for your specific location.",
     },
     {
       question: "Do you provide documentation for insurance purposes?",

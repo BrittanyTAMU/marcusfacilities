@@ -46,17 +46,17 @@ export function Hero() {
           </div>
 
           {/* Trust indicators */}
-          <div className="flex flex-wrap gap-6 text-primary-foreground/90 text-base animate-fade-in" style={{ animationDelay: "0.4s" }}>
+          <div className="flex flex-wrap gap-6 text-accent text-base font-medium animate-fade-in" style={{ animationDelay: "0.4s" }}>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-success" />
+              <span className="w-2 h-2 rounded-full bg-accent" />
               <span>Licensed & Insured</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-success" />
+              <span className="w-2 h-2 rounded-full bg-accent" />
               <span>24/7 Emergency Response</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-success" />
+              <span className="w-2 h-2 rounded-full bg-accent" />
               <span>Documentation for Insurers</span>
             </div>
           </div>

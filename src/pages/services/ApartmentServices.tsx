@@ -30,11 +30,11 @@ export default function ApartmentServices() {
         <title>Apartment Ice Safety Services Texas | Marcus Facilities</title>
         <meta
           name="description"
-          content="Professional freeze-event safety for Texas apartments and multifamily properties. Protect tenants, reduce liability, and maintain occupancy during winter freezes. Serving Houston, Dallas, Austin."
+          content="Professional freeze-event safety for Texas apartments and multifamily properties. Protect tenants, reduce liability, and maintain occupancy during winter freezes. Serving Dallas-Fort Worth."
         />
         <meta
           name="keywords"
-          content="apartment ice safety Texas, multifamily freeze protection Houston, apartment complex de-icing Dallas, tenant safety freeze events, multifamily ice control Austin"
+          content="apartment ice safety Texas, multifamily freeze protection Dallas-Fort Worth, apartment complex de-icing DFW, tenant safety freeze events, multifamily ice control"
         />
         <link rel="canonical" href="https://marcusfacilities.com/services/apartments" />
       </Helmet>
