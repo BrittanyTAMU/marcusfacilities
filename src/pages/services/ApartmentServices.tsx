@@ -6,6 +6,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FAQ } from "@/components/sections/FAQ";
 import { Contact } from "@/components/sections/Contact";
+import { scrollToSection } from "@/lib/scroll";
 
 const benefits = [
   "Protect tenants on walkways, stairs, and parking areas",
@@ -73,13 +74,27 @@ export default function ApartmentServices() {
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="hero" size="lg" asChild>
-                <a href="#contact">
+                <a
+                  href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("#contact");
+                  }}
+                >
                   <Shield className="w-5 h-5 mr-2" />
                   Request Quote
                 </a>
               </Button>
               <Button variant="heroOutline" size="lg" asChild>
-                <a href="#faq">Common Questions</a>
+                <a
+                  href="#faq"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("#faq");
+                  }}
+                >
+                  Common Questions
+                </a>
               </Button>
             </div>
           </div>

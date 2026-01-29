@@ -1,31 +1,24 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { scrollToSection } from "@/lib/scroll";
 
 const navigation = [
-  { name: "Services", href: "#coverage-options" },
-  { name: "Who We Serve", href: "#segments" },
-  { name: "FAQ", href: "#faq" },
-  { name: "Contact", href: "#contact" },
+  { name: "Services", href: "#coverage-options", scrollState: "coverage-options" },
+  { name: "Who We Serve", href: "#segments", scrollState: "segments" },
+  { name: "FAQ", href: "#faq", scrollState: null },
+  { name: "Contact", href: "#contact", scrollState: null },
 ];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      const headerOffset = 80; // Account for fixed header
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
+    scrollToSection(href);
     setMobileMenuOpen(false);
   };
 
@@ -45,22 +38,60 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-8">
-          {navigation.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              onClick={(e) => handleNavClick(e, item.href)}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-            >
-              {item.name}
-            </a>
-          ))}
+          {navigation.map((item) =>
+            isHome ? (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+              >
+                {item.name}
+              </a>
+            ) : item.scrollState ? (
+              <Link
+                key={item.name}
+                to="/"
+                state={{ scrollTo: item.scrollState }}
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ) : (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href);
+                  setMobileMenuOpen(false);
+                }}
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+              >
+                {item.name}
+              </a>
+            )
+          )}
         </div>
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-4">
           <Button variant="accent" asChild>
-            <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")}>Request Coverage</a>
+            {isHome ? (
+              <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")}>Request Coverage</a>
+            ) : (
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("#contact");
+                  setMobileMenuOpen(false);
+                }}
+              >
+                Request Coverage
+              </a>
+            )}
           </Button>
         </div>
 
@@ -85,19 +116,57 @@ export function Header() {
       {mobileMenuOpen && (
         <nav id="mobile-menu" className="lg:hidden bg-background border-b border-border" aria-label="Mobile navigation">
           <div className="container mx-auto px-4 py-4 space-y-4">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="block text-base font-medium text-muted-foreground hover:text-foreground cursor-pointer"
-                onClick={(e) => handleNavClick(e, item.href)}
-              >
-                {item.name}
-              </a>
-            ))}
+            {navigation.map((item) =>
+              isHome ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="block text-base font-medium text-muted-foreground hover:text-foreground cursor-pointer"
+                  onClick={(e) => handleNavClick(e, item.href)}
+                >
+                  {item.name}
+                </a>
+              ) : item.scrollState ? (
+                <Link
+                  key={item.name}
+                  to="/"
+                  state={{ scrollTo: item.scrollState }}
+                  className="block text-base font-medium text-muted-foreground hover:text-foreground"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="block text-base font-medium text-muted-foreground hover:text-foreground cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.href);
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  {item.name}
+                </a>
+              )
+            )}
             <div className="pt-4 border-t border-border">
               <Button variant="accent" className="w-full" asChild>
-                <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")}>Request Coverage</a>
+                {isHome ? (
+                  <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")}>Request Coverage</a>
+                ) : (
+                  <a
+                    href="#contact"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection("#contact");
+                      setMobileMenuOpen(false);
+                    }}
+                  >
+                    Request Coverage
+                  </a>
+                )}
               </Button>
             </div>
           </div>

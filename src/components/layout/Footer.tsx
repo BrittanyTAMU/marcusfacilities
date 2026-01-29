@@ -1,15 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Mail, MapPin } from "lucide-react";
+import { scrollToSection } from "@/lib/scroll";
 
 const serviceAreas = [
   "Dallas-Fort Worth",
 ];
 
 const services = [
-  "Pre-Treatment",
-  "Emergency Response",
-  "Ice Control",
-  "Documentation",
+  { name: "Pre-Treatment", scrollId: "pre-treatment" },
+  { name: "Emergency Response", scrollId: "emergency-response" },
+  { name: "Ice Control", scrollId: "ice-control" },
+  { name: "Documentation", scrollId: "documentation" },
 ];
 
 const segments = [
@@ -21,6 +22,8 @@ const segments = [
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   return (
     <footer className="bg-primary text-primary-foreground">
@@ -71,13 +74,27 @@ export function Footer() {
             <h4 className="font-semibold mb-4 text-base text-primary-foreground">Services</h4>
             <ul className="space-y-2">
               {services.map((service) => (
-                <li key={service}>
-                  <a
-                    href="#services"
-                    className="text-base text-primary-foreground hover:text-accent transition-colors"
-                  >
-                    {service}
-                  </a>
+                <li key={service.scrollId}>
+                  {isHome ? (
+                    <a
+                      href={`#${service.scrollId}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        scrollToSection(`#${service.scrollId}`);
+                      }}
+                      className="text-base text-primary-foreground hover:text-accent transition-colors cursor-pointer"
+                    >
+                      {service.name}
+                    </a>
+                  ) : (
+                    <Link
+                      to="/"
+                      state={{ scrollTo: service.scrollId }}
+                      className="text-base text-primary-foreground hover:text-accent transition-colors"
+                    >
+                      {service.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -110,18 +127,18 @@ export function Footer() {
               © {currentYear} Marcus Facilities LLC. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <a
-                href="#"
+              <Link
+                to="/privacy"
                 className="text-base text-primary-foreground/90 hover:text-accent transition-colors"
               >
                 Privacy Policy
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/terms"
                 className="text-base text-primary-foreground/90 hover:text-accent transition-colors"
               >
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
         </div>

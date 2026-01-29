@@ -1,4 +1,5 @@
 import { Home, Building, ShoppingBag, Truck, Plane, GraduationCap } from "lucide-react";
+import { scrollToSection } from "@/lib/scroll";
 
 const segments = [
   {
@@ -74,6 +75,10 @@ export function Segments() {
               </p>
               <a
                 href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("#contact");
+                }}
                 className="text-sm font-medium text-primary hover:text-accent transition-colors"
                 aria-label={`Request coverage for ${segment.title}`}
               >

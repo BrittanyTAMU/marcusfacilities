@@ -1,5 +1,6 @@
 import { Shield, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { scrollToSection } from "@/lib/scroll";
 
 export function Hero() {
   return (
@@ -33,13 +34,27 @@ export function Hero() {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <Button variant="hero" size="xl" asChild>
-              <a href="#contact" aria-label="Request seasonal coverage for freeze prevention">
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("#contact");
+                }}
+                aria-label="Request coverage — scroll to contact form"
+              >
                 <Shield className="w-5 h-5 mr-2" aria-hidden="true" />
-                Request Seasonal Coverage
+                Request Coverage
               </a>
             </Button>
             <Button variant="heroOutline" size="xl" asChild>
-              <a href="#services" aria-label="Learn how freeze prevention services work">
+              <a
+                href="#our-solution"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("#our-solution");
+                }}
+                aria-label="Learn how it works — scroll to our solution"
+              >
                 Learn How It Works
               </a>
             </Button>

@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -7,8 +9,19 @@ import { Segments } from "@/components/sections/Segment";
 import { Services } from "@/components/sections/Services";
 import { FAQ } from "@/components/sections/FAQ";
 import { Contact } from "@/components/sections/Contact";
+import { scrollToSection } from "@/lib/scroll";
 
 const Index = () => {
+  const location = useLocation();
+  const scrollTo = location.state?.scrollTo as string | undefined;
+
+  useEffect(() => {
+    if (scrollTo) {
+      const id = scrollTo.startsWith("#") ? scrollTo : `#${scrollTo}`;
+      scrollToSection(id);
+    }
+  }, [scrollTo]);
+
   return (
     <>
       <Helmet>

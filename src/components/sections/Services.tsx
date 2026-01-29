@@ -1,37 +1,14 @@
 import { Droplets, Thermometer, Wind, Clock, FileText, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { scrollToSection } from "@/lib/scroll";
 
 const services = [
-  {
-    icon: Thermometer,
-    title: "Pre-Treatment",
-    description: "Applied before freeze events to prevent ice formation. Our brine solutions are effective down to ~-20°F.",
-  },
-  {
-    icon: Droplets,
-    title: "Brine & Chemical Application",
-    description: "Liquid de-icers applied to prevent bonding between ice and pavement. More effective than rock salt alone.",
-  },
-  {
-    icon: Wind,
-    title: "Sanding & Ice Control",
-    description: "Abrasive materials for traction on icy surfaces. Essential for walkways, ramps, and loading areas.",
-  },
-  {
-    icon: Clock,
-    title: "24/7 Emergency Response",
-    description: "Round-the-clock availability during freeze events. Priority response times for contract customers.",
-  },
-  {
-    icon: FileText,
-    title: "Documentation for Insurers",
-    description: "Timestamped photos, treatment logs, and weather records. Protect yourself against liability claims.",
-  },
-  {
-    icon: Calendar,
-    title: "Seasonal Subscriptions",
-    description: "Lock in coverage for the entire freeze season (Nov–Mar). Predictable costs, guaranteed response.",
-  },
+  { id: "pre-treatment", icon: Thermometer, title: "Pre-Treatment", description: "Applied before freeze events to prevent ice formation. Our brine solutions are effective down to ~-20°F." },
+  { id: "brine-chemical", icon: Droplets, title: "Brine & Chemical Application", description: "Liquid de-icers applied to prevent bonding between ice and pavement. More effective than rock salt alone." },
+  { id: "ice-control", icon: Wind, title: "Sanding & Ice Control", description: "Abrasive materials for traction on icy surfaces. Essential for walkways, ramps, and loading areas." },
+  { id: "emergency-response", icon: Clock, title: "24/7 Emergency Response", description: "Round-the-clock availability during freeze events. Priority response times for contract customers." },
+  { id: "documentation", icon: FileText, title: "Documentation for Insurers", description: "Timestamped photos, treatment logs, and weather records. Protect yourself against liability claims." },
+  { id: "seasonal-subscriptions", icon: Calendar, title: "Seasonal Subscriptions", description: "Lock in coverage for the entire freeze season (Nov–Mar). Predictable costs, guaranteed response." },
 ];
 
 const coverageOptions = [
@@ -57,11 +34,11 @@ const coverageOptions = [
 
 export function Services() {
   return (
-    <section className="py-20 bg-background" id="services">
+    <section className="py-20 bg-background" id="services" aria-labelledby="our-solution-heading">
       <div className="container mx-auto px-4 lg:px-8">
-        {/* Section header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="text-sm font-medium text-accent uppercase tracking-wider">Our Solution</span>
+        {/* Section header — "Our Solution" */}
+        <div className="max-w-3xl mx-auto text-center mb-16" id="our-solution">
+          <span className="text-sm font-medium text-accent uppercase tracking-wider" id="our-solution-heading">Our Solution</span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-4 mb-6">
             Comprehensive Freeze-Event<br />
             Prevention & Response
@@ -76,7 +53,8 @@ export function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="flex gap-4 p-6 bg-card border border-border rounded-lg hover:shadow-md transition-shadow"
+              id={service.id}
+              className="flex gap-4 p-6 bg-card border border-border rounded-lg hover:shadow-md transition-shadow scroll-mt-24"
               role="listitem"
             >
               <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
@@ -128,7 +106,15 @@ export function Services() {
                   className="w-full"
                   asChild
                 >
-                  <a href="#contact">Get Quote</a>
+                  <a
+                    href="#contact"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection("#contact");
+                    }}
+                  >
+                    Get Quote
+                  </a>
                 </Button>
               </div>
             ))}

@@ -6,6 +6,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FAQ } from "@/components/sections/FAQ";
 import { Contact } from "@/components/sections/Contact";
+import { scrollToSection } from "@/lib/scroll";
 
 const benefits = [
   "Keep loading docks and yards operational",
@@ -73,13 +74,27 @@ export default function LogisticsServices() {
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="hero" size="lg" asChild>
-                <a href="#contact">
+                <a
+                  href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("#contact");
+                  }}
+                >
                   <Shield className="w-5 h-5 mr-2" />
                   Request Priority SLA
                 </a>
               </Button>
               <Button variant="heroOutline" size="lg" asChild>
-                <a href="#faq">Common Questions</a>
+                <a
+                  href="#faq"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("#faq");
+                  }}
+                >
+                  Common Questions
+                </a>
               </Button>
             </div>
           </div>
@@ -98,8 +113,20 @@ export default function LogisticsServices() {
                   Guaranteed response times with dedicated crews for logistics and industrial facilities
                 </p>
               </div>
-              <Button variant="outline" className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent" asChild>
-                <a href="#contact">Learn More</a>
+              <Button
+                variant="outline"
+                className="border-primary bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground"
+                asChild
+              >
+                <a
+                  href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("#contact");
+                  }}
+                >
+                  Learn More
+                </a>
               </Button>
             </div>
           </div>
