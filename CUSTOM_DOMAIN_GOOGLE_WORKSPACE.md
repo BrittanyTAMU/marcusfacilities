@@ -122,11 +122,15 @@ If you prefer the site only at `www`:
 
 Replace `BrittanyTAMU` with your GitHub username.
 
-### Optional: Both root and www
+### Both root and www (recommended)
 
-- Add the **four A records** (as in Option A) for the root.
-- Add the **one CNAME** for `www` (as in Option B).
-- In **`public/CNAME`** you can only put **one** domain; use either `marcusfacilities.com` or `www.marcusfacilities.com`. GitHub will often redirect the other once the custom domain is set in Step 4.
+To have your site at **both** `https://marcusfacilities.com` and `https://www.marcusfacilities.com`:
+
+1. Add the **four A records** (as in Option A) for the **root** domain (`@`). This makes `marcusfacilities.com` point to GitHub instead of Squarespace (or any other host).
+2. Keep the **one CNAME** for `www` (as in Option B) pointing to `YourUsername.github.io`.
+3. In **`public/CNAME`** you can keep either `marcusfacilities.com` or `www.marcusfacilities.com`. GitHub will serve the site for both; in GitHub repo **Settings → Pages → Custom domain** you can set one as primary and GitHub will redirect the other to it.
+
+**If the root currently shows Squarespace “under construction”:** The root domain is still pointing to Squarespace. Add the four A records for `@` in your DNS (Squarespace Domains → Custom records). Do **not** remove your MX or other email records. After DNS propagates (minutes to 48 hours), `https://marcusfacilities.com` will show your GitHub Pages site. Both URLs will then work.
 
 Save all DNS changes. Propagation can take from a few minutes up to 48 hours.
 

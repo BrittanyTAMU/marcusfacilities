@@ -1,24 +1,24 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { HeaderV2 } from "@/v2/HeaderV2";
+import { FooterV2 } from "@/v2/FooterV2";
 
 const CONTACT_EMAIL = "sales@marcusfacilities.com";
 const DATE = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
-export default function Terms() {
+export default function TermsV2() {
   return (
     <>
       <Helmet>
         <title>Terms of Service | Marcus Facilities</title>
-        <meta name="description" content="Terms of Service for Marcus Facilities. Acceptance of terms, services provided, and legal information." />
-        <link rel="canonical" href="https://marcusfacilities.com/terms" />
+        <meta name="description" content="Terms of Service for Marcus Facilities. Acceptance of terms and legal information." />
+        <link rel="canonical" href="https://marcusfacilities.com/#/v2/terms" />
       </Helmet>
 
-      <Header />
+      <HeaderV2 />
       <main className="min-h-screen pt-24 pb-16">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
-          <Link to="/" className="text-sm text-foreground/70 hover:text-foreground mb-6 inline-block">
+          <Link to="/v2" className="text-sm text-foreground/70 hover:text-foreground mb-6 inline-block">
             ← Back to Home
           </Link>
 
@@ -34,44 +34,44 @@ export default function Terms() {
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold mt-8 mb-2">2. Services Provided</h2>
+              <h2 className="text-xl font-semibold mt-8 mb-2">2. Services</h2>
               <p className="text-foreground/80">
-                Marcus Facilities provides facilities operations, logistics, environmental services, and compliance support services for government agencies and prime contractors. We do not guarantee specific contract awards or procurement outcomes.
+                Marcus Facilities LLC provides management consulting, technical operations, and advisory services. We do not guarantee specific outcomes or results. Engagement terms are defined in separate agreements where applicable.
               </p>
             </section>
 
             <section>
               <h2 className="text-xl font-semibold mt-8 mb-2">3. No Professional Advice</h2>
               <p className="text-foreground/80">
-                Content provided on this site is for informational purposes only and should not be considered legal, procurement, or professional contracting advice. Consult with qualified procurement professionals for specific contracting needs.
+                Content on this site is for general informational purposes only and does not constitute legal, financial, or professional advice. Consult qualified professionals for decisions specific to your situation.
               </p>
             </section>
 
             <section>
               <h2 className="text-xl font-semibold mt-8 mb-2">4. Limitation of Liability</h2>
               <p className="text-foreground/80">
-                To the maximum extent permitted by law, Marcus Facilities is not liable for any damages arising from the use of this website or reliance on its content. This includes, but is not limited to, procurement decisions, contract awards, or business outcomes.
+                To the maximum extent permitted by law, Marcus Facilities LLC is not liable for any damages arising from use of this website or reliance on its content, including business decisions or outcomes.
               </p>
             </section>
 
             <section>
               <h2 className="text-xl font-semibold mt-8 mb-2">5. Third-Party Links</h2>
               <p className="text-foreground/80">
-                Our website may contain links to third-party sites, including government procurement portals (e.g., SAM.gov, GSA). We are not responsible for their content, practices, or availability.
+                This site may link to third-party websites. We are not responsible for their content, practices, or availability.
               </p>
             </section>
 
             <section>
               <h2 className="text-xl font-semibold mt-8 mb-2">6. Termination</h2>
               <p className="text-foreground/80">
-                We reserve the right to restrict or terminate access to the website at any time without notice.
+                We may restrict or terminate access to this website at any time without notice.
               </p>
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold mt-8 mb-2">7. Changes to Terms</h2>
+              <h2 className="text-xl font-semibold mt-8 mb-2">7. Changes</h2>
               <p className="text-foreground/80">
-                We may update these Terms of Service at any time. Continued use of the website constitutes acceptance of any changes. The "Last updated" date at the top indicates when these terms were last revised.
+                We may update these Terms at any time. Continued use constitutes acceptance of changes. The "Last updated" date reflects the latest revision.
               </p>
             </section>
 
@@ -85,14 +85,13 @@ export default function Terms() {
             <section>
               <h2 className="text-xl font-semibold mt-8 mb-2">9. Contact</h2>
               <p className="text-foreground/80">
-                If you have questions about these Terms, contact us at:
+                Questions about these Terms: <a href={`mailto:${CONTACT_EMAIL}`} className="text-primary hover:underline font-semibold">{CONTACT_EMAIL}</a>
               </p>
-              <p className="mt-2"><strong>Email:</strong> <a href={`mailto:${CONTACT_EMAIL}`} className="text-primary hover:underline font-semibold">{CONTACT_EMAIL}</a></p>
             </section>
           </div>
         </div>
       </main>
-      <Footer />
+      <FooterV2 />
     </>
   );
 }

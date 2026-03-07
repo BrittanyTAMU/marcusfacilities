@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { scrollToSection } from "@/lib/scroll";
 
 const navigation = [
-  { name: "Services", href: "#coverage-options", scrollState: "coverage-options" },
-  { name: "Who We Serve", href: "#segments", scrollState: "segments" },
+  { name: "Services", href: "#services", scrollState: "services" },
+  { name: "About", href: "#about", scrollState: "about" },
   { name: "FAQ", href: "#faq", scrollState: null },
   { name: "Contact", href: "#contact", scrollState: null },
 ];
@@ -22,6 +22,11 @@ export function Header() {
     setMobileMenuOpen(false);
   };
 
+  const handleDownloadCapabilityStatement = () => {
+    const pdfUrl = "/Capability_Statement_MarcusFacilitiesLLC_NAICS_561210.pdf";
+    window.open(pdfUrl, "_blank");
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <nav className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8" aria-label="Main navigation">
@@ -32,7 +37,7 @@ export function Header() {
           </div>
           <div className="hidden sm:block">
             <span className="font-bold text-lg text-foreground">Marcus Facilities</span>
-            <span className="block text-sm text-muted-foreground">Freeze Event Safety</span>
+            <span className="block text-sm text-muted-foreground">Government Contracting</span>
           </div>
         </Link>
 
@@ -77,22 +82,16 @@ export function Header() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-4">
-          <Button variant="accent" asChild>
-            {isHome ? (
-              <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")}>Request Coverage</a>
-            ) : (
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("#contact");
-                  setMobileMenuOpen(false);
-                }}
-              >
-                Request Coverage
-              </a>
-            )}
-          </Button>
+          {isHome ? (
+            <Button variant="accent" asChild>
+              <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")}>Request Capability Statement</a>
+            </Button>
+          ) : (
+            <Button variant="accent" onClick={handleDownloadCapabilityStatement}>
+              <Download className="w-4 h-4 mr-2" aria-hidden="true" />
+              Download Capability Statement
+            </Button>
+          )}
         </div>
 
         {/* Mobile menu button */}
@@ -152,22 +151,16 @@ export function Header() {
               )
             )}
             <div className="pt-4 border-t border-border">
-              <Button variant="accent" className="w-full" asChild>
-                {isHome ? (
-                  <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")}>Request Coverage</a>
-                ) : (
-                  <a
-                    href="#contact"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection("#contact");
-                      setMobileMenuOpen(false);
-                    }}
-                  >
-                    Request Coverage
-                  </a>
-                )}
-              </Button>
+              {isHome ? (
+                <Button variant="accent" className="w-full" asChild>
+                  <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")}>Request Capability Statement</a>
+                </Button>
+              ) : (
+                <Button variant="accent" className="w-full" onClick={handleDownloadCapabilityStatement}>
+                  <Download className="w-4 h-4 mr-2" aria-hidden="true" />
+                  Download Capability Statement
+                </Button>
+              )}
             </div>
           </div>
         </nav>

@@ -1,23 +1,17 @@
 import { Link, useLocation } from "react-router-dom";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, FileText } from "lucide-react";
 import { scrollToSection } from "@/lib/scroll";
 
 const serviceAreas = [
-  "Dallas-Fort Worth",
+  "North Texas (DFW Metroplex)",
+  "Northern New Jersey",
 ];
 
 const services = [
-  { name: "Pre-Treatment", scrollId: "pre-treatment" },
-  { name: "Emergency Response", scrollId: "emergency-response" },
-  { name: "Ice Control", scrollId: "ice-control" },
-  { name: "Documentation", scrollId: "documentation" },
-];
-
-const segments = [
-  { name: "HOAs", href: "/services/hoa" },
-  { name: "Apartments", href: "/services/apartments" },
-  { name: "Retail", href: "/services/retail" },
-  { name: "Logistics", href: "/services/logistics" },
+  { name: "Facilities Operations", scrollId: "facilities-operations" },
+  { name: "Logistics & Transport", scrollId: "logistics-transport" },
+  { name: "Environmental Services", scrollId: "environmental-services" },
+  { name: "Compliance & Support", scrollId: "compliance-support" },
 ];
 
 export function Footer() {
@@ -41,7 +35,7 @@ export function Footer() {
               </div>
             </div>
             <p className="text-primary-foreground text-base mb-6">
-              Professional freeze-event safety and ice control services for Texas commercial and residential properties.
+              Professional facilities operations, logistics, environmental services, and compliance support for government agencies and prime contractors.
             </p>
             <div className="space-y-3">
               <a
@@ -100,21 +94,26 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Who We Serve */}
+          {/* Procurement Info */}
           <div>
-            <h4 className="font-semibold mb-4 text-base text-primary-foreground">Who We Serve</h4>
-            <ul className="space-y-2">
-              {segments.map((segment) => (
-                <li key={segment.name}>
-                  <Link
-                    to={segment.href}
-                    className="text-base text-primary-foreground hover:text-accent transition-colors"
-                  >
-                    {segment.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <h4 className="font-semibold mb-4 text-base text-primary-foreground flex items-center gap-2">
+              <FileText className="w-4 h-4" />
+              Procurement
+            </h4>
+            <div className="space-y-2 text-sm text-primary-foreground/90">
+              <div>
+                <span className="font-medium">UEI:</span> 000000000
+              </div>
+              <div>
+                <span className="font-medium">CAGE:</span> XXXXX
+              </div>
+              <div>
+                <span className="font-medium">Primary NAICS:</span> 561210
+              </div>
+              <div>
+                <span className="font-medium">Secondary NAICS:</span> 561720, 561730, 562910, 491110, 492110, 541922, 238220, 561990, 811192
+              </div>
+            </div>
           </div>
         </div>
       </div>

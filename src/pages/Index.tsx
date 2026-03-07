@@ -4,9 +4,9 @@ import { Helmet } from "react-helmet-async";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
-import { Problem } from "@/components/sections/Problem";
-import { Segments } from "@/components/sections/Segment";
+import { About } from "@/components/sections/About";
 import { Services } from "@/components/sections/Services";
+import { ProcurementSidebar } from "@/components/sections/ProcurementSidebar";
 import { FAQ } from "@/components/sections/FAQ";
 import { Contact } from "@/components/sections/Contact";
 import { scrollToSection } from "@/lib/scroll";
@@ -25,70 +25,36 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Marcus Facilities | Freeze Event Safety & Ice Control Services in Texas</title>
+        <title>Marcus Facilities | Government Contracting Services | Facilities & Logistics</title>
         <meta
           name="description"
-          content="Professional freeze-event safety services for Texas HOAs, apartments, retail, and logistics properties. Pre-treatment, ice control, and 24/7 emergency response. Serving Dallas-Fort Worth."
+          content="Professional facilities operations, logistics, environmental services, and compliance support for government agencies and prime contractors. NAICS 561210. Serving North Texas and Northern New Jersey."
         />
         <meta
           name="keywords"
-          content="HOA ice prevention Dallas-Fort Worth, commercial de-icing DFW, Texas ice hazard services, property slip-and-fall mitigation, apartment ice safety vendor, freeze event prevention Texas"
+          content="government contracting, facilities support services, NAICS 561210, logistics services, environmental services, compliance support, prime contractor, subcontractor, DFW metroplex, Northern New Jersey"
         />
         <link rel="canonical" href="https://marcusfacilities.com" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Marcus Facilities | Freeze Event Safety Services" />
-        <meta property="og:description" content="Professional ice control and freeze-event prevention for Texas commercial and residential properties." />
+        <meta property="og:title" content="Marcus Facilities | Government Contracting Services" />
+        <meta property="og:description" content="Trusted facilities operations, logistics, environmental services, and compliance support for government agencies and prime contractors." />
         <meta property="og:type" content="website" />
         
-        {/* Local Business Schema */}
+        {/* Organization Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "LocalBusiness",
+            "@type": "Organization",
             "name": "Marcus Facilities",
-            "description": "Professional freeze-event safety and ice control services for Texas properties",
+            "description": "Professional facilities operations, logistics, environmental services, and compliance support for government contracting",
             "url": "https://marcusfacilities.com",
             "email": "sales@marcusfacilities.com",
             "areaServed": [
-              { "@type": "City", "name": "Dallas-Fort Worth" }
+              { "@type": "City", "name": "Dallas-Fort Worth" },
+              { "@type": "City", "name": "Northern New Jersey" }
             ],
-            "serviceType": ["Ice Control", "Freeze Event Prevention", "Pre-Treatment", "Emergency Response"],
-            "priceRange": "$$"
-          })}
-        </script>
-
-        {/* FAQ Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "Why does Texas get ice instead of snow?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Texas freeze events typically occur when temperatures hover around 32°F (0°C). Rain falls as liquid but freezes on contact with cold surfaces, creating dangerous ice layers."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Who is responsible for ice on private property in Texas?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Property owners and managers are legally responsible for maintaining safe conditions on their premises, including during freeze events. This includes parking lots, walkways, stairs, ramps, and entrances."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Why do HOAs need pre-treatment services?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Pre-treatment is the most effective way to prevent ice formation. Applied before a freeze event, brine solutions prevent the bond between ice and pavement, making any ice that does form much easier to remove."
-                }
-              }
-            ]
+            "serviceType": ["Facilities Operations", "Logistics & Transport", "Environmental Services", "Compliance & Support"]
           })}
         </script>
       </Helmet>
@@ -96,9 +62,19 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <Problem />
-        <Segments />
-        <Services />
+        <About />
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="grid lg:grid-cols-4 gap-8">
+              <div className="lg:col-span-3">
+                <Services />
+              </div>
+              <div className="lg:col-span-1">
+                <ProcurementSidebar />
+              </div>
+            </div>
+          </div>
+        </section>
         <FAQ />
         <Contact />
       </main>

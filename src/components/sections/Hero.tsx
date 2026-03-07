@@ -1,8 +1,14 @@
-import { Shield, AlertTriangle } from "lucide-react";
+import { FileText, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { scrollToSection } from "@/lib/scroll";
 
 export function Hero() {
+  const handleDownloadCapabilityStatement = () => {
+    // TODO: Replace with actual PDF URL when available
+    const pdfUrl = "/Capability_Statement_MarcusFacilitiesLLC_NAICS_561210.pdf";
+    window.open(pdfUrl, "_blank");
+  };
+
   return (
     <section className="relative hero-gradient min-h-[90vh] flex items-center pt-20">
       {/* Background pattern */}
@@ -15,64 +21,65 @@ export function Hero() {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-4xl">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-accent/20 border border-accent/30 rounded-full px-4 py-2 mb-6 animate-fade-in">
-            <AlertTriangle className="w-5 h-5 text-accent" />
-            <span className="text-base font-medium text-primary-foreground">Texas Freeze Season: November – March</span>
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 mb-6 animate-fade-in">
+            <FileText className="w-5 h-5 text-white" />
+            <span className="text-base font-medium text-white">Government Contracting Services</span>
           </div>
 
           {/* Headline */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-            Freeze Event Safety &<br />
-            <span className="text-accent">Property Continuity Services</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+            Trusted Facilities &<br />
+            <span className="text-white">Logistics Solutions</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mb-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            We help Texas properties prevent injuries, shutdowns, and liability during winter freeze events. Pretreatment, ice control, and emergency response for HOAs, apartments, retail, and logistics.
+          <p className="text-lg md:text-xl text-white/95 max-w-2xl mb-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            Professional facilities operations, logistics, environmental services, and compliance support for government agencies and prime contractors. Serving North Texas and Northern New Jersey.
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            <Button variant="hero" size="xl" asChild>
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("#contact");
-                }}
-                aria-label="Request coverage — scroll to contact form"
-              >
-                <Shield className="w-5 h-5 mr-2" aria-hidden="true" />
-                Request Coverage
-              </a>
+            <Button 
+              variant="hero" 
+              size="xl" 
+              onClick={handleDownloadCapabilityStatement}
+              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+            >
+              <Download className="w-5 h-5 mr-2" aria-hidden="true" />
+              Download Capability Statement (PDF)
             </Button>
-            <Button variant="heroOutline" size="xl" asChild>
+            <Button 
+              variant="heroOutline" 
+              size="xl" 
+              asChild
+              className="border-2 border-white text-white hover:bg-white/10 bg-transparent"
+            >
               <a
-                href="#our-solution"
+                href="#services"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection("#our-solution");
+                  scrollToSection("#services");
                 }}
-                aria-label="Learn how it works — scroll to our solution"
+                aria-label="View our services"
               >
-                Learn How It Works
+                View Services
               </a>
             </Button>
           </div>
 
           {/* Trust indicators */}
-          <div className="flex flex-wrap gap-6 text-accent text-base font-medium animate-fade-in" style={{ animationDelay: "0.4s" }}>
+          <div className="flex flex-wrap gap-6 text-foreground text-base font-semibold animate-fade-in" style={{ animationDelay: "0.4s" }}>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-accent" />
-              <span>Licensed & Insured</span>
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              <span>NAICS 561210 Certified</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-accent" />
-              <span>24/7 Emergency Response</span>
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              <span>UEI Registered</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-accent" />
-              <span>Documentation for Insurers</span>
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              <span>Prime & Subcontractor Ready</span>
             </div>
           </div>
         </div>

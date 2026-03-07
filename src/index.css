@@ -22,21 +22,21 @@
     --popover: 0 0% 100%;
     --popover-foreground: 215 25% 15%;
 
-    /* Primary - Deep industrial navy */
-    --primary: 215 50% 18%;
+    /* Primary - Trust & Reliability Navy Blue #1B365D */
+    --primary: 212 55% 24%;
     --primary-foreground: 210 40% 98%;
 
-    /* Secondary - Cool slate gray */
-    --secondary: 210 15% 93%;
-    --secondary-foreground: 215 25% 20%;
+    /* Secondary - Slate #4A4A4A */
+    --secondary: 0 0% 29%;
+    --secondary-foreground: 210 40% 98%;
 
     /* Muted - Subtle gray for backgrounds */
     --muted: 210 15% 95%;
     --muted-foreground: 215 15% 45%;
 
-    /* Accent - Safety amber/orange for CTAs */
-    --accent: 32 95% 50%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent - Navy Blue for CTAs (Trust & Reliability theme) */
+    --accent: 212 55% 24%;
+    --accent-foreground: 210 40% 98%;
 
     /* Warning orange for urgency */
     --warning: 25 95% 53%;
@@ -57,9 +57,9 @@
 
     --radius: 0.375rem;
 
-    /* Hero gradient - industrial dark blue */
-    --hero-gradient-start: 215 55% 12%;
-    --hero-gradient-end: 215 45% 22%;
+    /* Hero gradient - Navy Blue trust theme */
+    --hero-gradient-start: 212 55% 20%;
+    --hero-gradient-end: 212 55% 28%;
 
     /* Section backgrounds */
     --section-alt: 210 20% 96%;

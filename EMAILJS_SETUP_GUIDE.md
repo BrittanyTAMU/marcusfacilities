@@ -27,7 +27,7 @@ This guide will help you set up EmailJS to receive contact form submissions dire
 6. Grant EmailJS permission to send emails on your behalf
 7. Give your service a name (e.g., "Marcus Facilities Contact")
 8. Click **"Create Service"**
-9. **Copy the Service ID** - you'll need this later (service_wqr84bo)
+9. **Copy the Service ID** - you'll need this later ()
 
 ## Step 3: Create Email Template
 
@@ -60,12 +60,12 @@ This guide will help you set up EmailJS to receive contact form submissions dire
    ```
 
 5. Click **"Save"**
-6. **Copy the Template ID** - you'll need this later
+6. **Copy the Template ID** - you'll need this later ()
 
 ## Step 4: Get Your Public Key
 
 1. Go to **"Account"** → **"General"** in the left sidebar
-2. Find **"Public Key"** section
+2. Find **"Public Key"** section ()
 3. **Copy your Public Key** - you'll need this later
 
 ## Step 5: Configure Your Website

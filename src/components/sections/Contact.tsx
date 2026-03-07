@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { Send, Phone, Mail, MapPin, CheckCircle } from "lucide-react";
+import { Send, Mail, MapPin, CheckCircle, Download, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Select,
   SelectContent,
@@ -15,27 +13,15 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import emailjs from "@emailjs/browser";
 
-const propertyTypes = [
-  "HOA / Community",
-  "Apartment / Multifamily",
-  "Retail / Medical",
-  "Logistics / Industrial",
-  "Airport / Transportation Hub",
-  "School / University",
-  "Other",
+const REASON_OPTIONS = [
+  "Logistics & Postal Operations (CDS/HCR)",
+  "Facilities Maintenance (Janitorial/Snow/Pressure Washing)",
+  "Specialized Environmental (Abatement/Remediation)",
+  "General Procurement / Prime Contractor Inquiries",
 ];
 
-const coverageTypes = [
-  "Seasonal Coverage",
-  "On-Call Response",
-  "Priority SLA",
-];
-
-const serviceTypes = [
-  "Drain Cover",
-  "Sand",
-  "Sand Cleanup",
-];
+const PRIMARY_NAICS = "561210";
+const SECONDARY_NAICS = ["561720", "561730", "562910", "491110", "492110", "541922", "238220", "561990", "811192"];
 
 export function Contact() {
   const { toast } = useToast();
@@ -45,10 +31,9 @@ export function Contact() {
     name: "",
     email: "",
     phone: "",
-    propertyType: "",
-    coverageType: "",
-    addOnServices: [] as string[],
-    city: "",
+    company: "",
+    department: "",
+    reasonForInquiry: "",
     message: "",
   });
 
@@ -57,7 +42,7 @@ export function Contact() {
     setIsSubmitting(true);
 
     // Validate form
-    if (!formData.name.trim() || !formData.email.trim() || !formData.propertyType || !formData.coverageType) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.reasonForInquiry) {
       toast({
         title: "Missing Information",
         description: "Please fill in all required fields.",
@@ -79,7 +64,7 @@ export function Contact() {
       return;
     }
 
-    // EmailJS configuration - Get from environment variables
+    // EmailJS configuration
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "";
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "";
@@ -95,28 +80,23 @@ export function Contact() {
     }
 
     try {
-      // Prepare email template parameters
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         phone: formData.phone || "Not provided",
-        property_type: formData.propertyType,
-        coverage_type: formData.coverageType,
-        add_on_services: formData.addOnServices.length > 0 
-          ? formData.addOnServices.join(", ") 
-          : "None selected",
-        city: formData.city || "Not provided",
+        company: formData.company || "Not provided",
+        department: formData.department || "Not provided",
+        reason_for_inquiry: formData.reasonForInquiry,
         message: formData.message || "No message provided",
         reply_to: formData.email,
       };
 
-      // Send email via EmailJS
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
       setIsSubmitted(true);
       toast({
         title: "Request Submitted Successfully",
-        description: "We've received your request and will contact you within 24 hours.",
+        description: "We've received your inquiry and will contact you within 24 hours.",
       });
       
       // Reset form
@@ -124,10 +104,9 @@ export function Contact() {
         name: "",
         email: "",
         phone: "",
-        propertyType: "",
-        coverageType: "",
-        addOnServices: [],
-        city: "",
+        company: "",
+        department: "",
+        reasonForInquiry: "",
         message: "",
       });
     } catch (error) {
@@ -151,10 +130,10 @@ export function Contact() {
               <CheckCircle className="w-10 h-10 text-success" />
             </div>
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Thank You for Your Interest
+              Thank You for Your Inquiry
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              We've received your request and will contact you within 24 hours to discuss your freeze-event safety needs.
+              We've received your request and will contact you within 24 hours to discuss your procurement needs.
             </p>
             <Button
               variant="outline"
@@ -164,10 +143,9 @@ export function Contact() {
                   name: "",
                   email: "",
                   phone: "",
-                  propertyType: "",
-                  coverageType: "",
-                  addOnServices: [],
-                  city: "",
+                  company: "",
+                  department: "",
+                  reasonForInquiry: "",
                   message: "",
                 });
               }}
@@ -185,59 +163,90 @@ export function Contact() {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Left side - Info */}
+            {/* Left side - Company Info */}
             <div>
-              <span className="text-sm font-medium text-accent uppercase tracking-wider">Get Started</span>
+              <span className="text-sm font-medium text-primary uppercase tracking-wider">Contact Us</span>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-4 mb-6">
-                Request Coverage
+                Request Capability Statement
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
-                Fill out the form and we'll contact you within 24 hours to discuss your property's freeze-event safety needs and provide a customized quote.
+                Fill out the form to receive our Corporate Capability Statement and discuss your procurement needs.
               </p>
 
+              {/* Procurement Information */}
+              <div className="space-y-6 mb-8 p-6 bg-card border-2 border-primary/20 rounded-lg">
+                <div>
+                  <h3 className="font-semibold text-foreground mb-4 text-lg flex items-center gap-2">
+                    <FileText className="w-5 h-5 text-primary" />
+                    Procurement Information
+                  </h3>
+                  <div className="space-y-3 text-base">
+                    <div>
+                      <span className="font-semibold text-foreground">Primary NAICS:</span>{" "}
+                      <span className="text-foreground font-bold">{PRIMARY_NAICS}</span>{" "}
+                      <span className="text-foreground/80">(Facilities Support Services)</span>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-foreground">Secondary NAICS:</span>{" "}
+                      <span className="text-foreground">{SECONDARY_NAICS.join(", ")}</span>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-foreground">Certifications:</span>{" "}
+                      <span className="text-foreground">SBE (NJ) - Pending, HUB (Texas) - Pending</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Contact info */}
-              <div className="space-y-4 mb-8">
+              <div className="space-y-4">
                 <a
                   href="mailto:sales@marcusfacilities.com"
-                  className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
+                  className="flex items-center gap-3 text-foreground hover:text-primary transition-colors"
                 >
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Mail className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-medium text-foreground text-base">sales@marcusfacilities.com</p>
-                    <p className="text-base">We respond within 24 hours</p>
+                    <p className="font-semibold text-foreground text-base">sales@marcusfacilities.com</p>
+                    <p className="text-base text-foreground/80">We respond within 24 hours</p>
                   </div>
                 </a>
-                <div className="flex items-center gap-3 text-muted-foreground">
+                <div className="flex items-center gap-3 text-foreground">
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <MapPin className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-medium text-foreground text-base">Service Areas</p>
-                    <p className="text-base">Dallas-Fort Worth</p>
+                    <p className="font-semibold text-foreground text-base">Service Areas</p>
+                    <p className="text-base text-foreground/80">North Texas (DFW Metroplex) • Northern New Jersey</p>
                   </div>
                 </div>
-              </div>
-
-              {/* Join freeze list CTA */}
-              <div className="p-6 bg-accent/10 border border-accent/20 rounded-lg">
-                <h3 className="font-semibold text-foreground mb-2 text-lg">
-                  Join Our Priority Freeze List
-                </h3>
-                <p className="text-base text-muted-foreground mb-4">
-                  Get early notifications before freeze events and priority scheduling for emergency response.
-                </p>
-                <Button variant="accent" size="sm" asChild>
-                  <a href="mailto:sales@marcusfacilities.com?subject=Priority%20Freeze%20List%20Signup">
-                    Join the List
-                  </a>
-                </Button>
               </div>
             </div>
 
             {/* Right side - Form */}
-            <div className="bg-card border border-border rounded-xl p-8">
+            <div className="bg-card border-2 border-border rounded-xl p-8">
+              {/* Download Capability Statement Button */}
+              <div className="mb-8 p-6 bg-primary/5 border-2 border-primary/20 rounded-lg text-center">
+                <h3 className="font-bold text-foreground mb-2 text-lg">
+                  Download Our Corporate Capability Statement
+                </h3>
+                <p className="text-sm text-foreground/80 mb-4">
+                  Get detailed service descriptions, certifications, and contracting information.
+                </p>
+                <Button
+                  size="lg"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                  onClick={() => {
+                    const pdfUrl = "/Capability_Statement_MarcusFacilitiesLLC_NAICS_561210.pdf";
+                    window.open(pdfUrl, "_blank");
+                  }}
+                >
+                  <Download className="w-5 h-5 mr-2" />
+                  Download Capability Statement (PDF)
+                </Button>
+              </div>
+
               <form onSubmit={handleSubmit} className="space-y-6" aria-label="Contact form">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -259,7 +268,6 @@ export function Contact() {
                       placeholder="you@company.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      maxLength={255}
                       required
                     />
                   </div>
@@ -274,34 +282,43 @@ export function Contact() {
                       placeholder="(555) 123-4567"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      maxLength={20}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="city">City</Label>
+                    <Label htmlFor="company">Company / Agency</Label>
                     <Input
-                      id="city"
-                      placeholder="Dallas-Fort Worth area"
-                      value={formData.city}
-                      onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                      maxLength={100}
+                      id="company"
+                      placeholder="Your company or agency"
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="propertyType">Property Type *</Label>
+                  <Label htmlFor="department">Department</Label>
+                  <Input
+                    id="department"
+                    placeholder="Your department"
+                    value={formData.department}
+                    onChange={(e) => setFormData({ ...formData, department: e.target.value })}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="reasonForInquiry">Reason for Inquiry *</Label>
                   <Select
-                    value={formData.propertyType}
-                    onValueChange={(value) => setFormData({ ...formData, propertyType: value })}
+                    value={formData.reasonForInquiry}
+                    onValueChange={(value) => setFormData({ ...formData, reasonForInquiry: value })}
+                    required
                   >
-                    <SelectTrigger aria-label="Select property type">
-                      <SelectValue placeholder="Select property type" />
+                    <SelectTrigger id="reasonForInquiry" aria-label="Select reason for inquiry">
+                      <SelectValue placeholder="Select a reason" />
                     </SelectTrigger>
                     <SelectContent>
-                      {propertyTypes.map((type) => (
-                        <SelectItem key={type} value={type}>
-                          {type}
+                      {REASON_OPTIONS.map((reason) => (
+                        <SelectItem key={reason} value={reason}>
+                          {reason}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -309,63 +326,11 @@ export function Contact() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="coverageType">Coverage Type *</Label>
-                  <Select
-                    value={formData.coverageType}
-                    onValueChange={(value) => setFormData({ ...formData, coverageType: value })}
-                  >
-                    <SelectTrigger aria-label="Select coverage type">
-                      <SelectValue placeholder="Select coverage type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {coverageTypes.map((type) => (
-                        <SelectItem key={type} value={type}>
-                          {type}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-3">
-                  <Label>Add-on Services (Select one or more)</Label>
-                  <div className="space-y-3">
-                    {serviceTypes.map((service) => (
-                      <div key={service} className="flex items-center space-x-2">
-                        <Checkbox
-                          id={`service-${service}`}
-                          checked={formData.addOnServices.includes(service)}
-                          onCheckedChange={(checked) => {
-                            if (checked) {
-                              setFormData({
-                                ...formData,
-                                addOnServices: [...formData.addOnServices, service],
-                              });
-                            } else {
-                              setFormData({
-                                ...formData,
-                                addOnServices: formData.addOnServices.filter((s) => s !== service),
-                              });
-                            }
-                          }}
-                        />
-                        <label
-                          htmlFor={`service-${service}`}
-                          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
-                        >
-                          {service}
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
+                  <Label htmlFor="message">Additional Message</Label>
+                  <textarea
                     id="message"
-                    placeholder="Tell us about your property and coverage needs..."
-                    rows={4}
+                    className="flex min-h-[100px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    placeholder="Tell us more about your procurement needs..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     maxLength={1000}
@@ -374,24 +339,21 @@ export function Contact() {
 
                 <Button
                   type="submit"
-                  variant="accent"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
                   size="lg"
-                  className="w-full"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    "Submitting..."
+                    <>
+                      <span className="mr-2">Sending...</span>
+                    </>
                   ) : (
                     <>
-                      <Send className="w-4 h-4 mr-2" />
-                      Request Information
+                      <Send className="w-5 h-5 mr-2" />
+                      Submit Request
                     </>
                   )}
                 </Button>
-
-                <p className="text-sm text-center text-muted-foreground">
-                  By submitting this form, you agree to be contacted about our services.
-                </p>
               </form>
             </div>
           </div>

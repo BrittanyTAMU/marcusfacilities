@@ -5,6 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // Use "/" for custom domain or repo named username.github.io; use "/REPO-NAME/" for username.github.io/REPO-NAME/
   base: mode === "production" ? "/" : "/",
   server: {
     host: "::",
