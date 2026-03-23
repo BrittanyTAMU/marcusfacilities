@@ -27,17 +27,19 @@ const App = () => (
         <Sonner />
         <HashRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/v2" element={<Corporate />} />
-            <Route path="/v2/about" element={<AboutV2 />} />
-            <Route path="/v2/privacy" element={<PrivacyV2 />} />
-            <Route path="/v2/terms" element={<TermsV2 />} />
+            {/* V2 (corporate) is the main live site at / */}
+            <Route path="/" element={<Corporate />} />
+            <Route path="/about" element={<AboutV2 />} />
+            <Route path="/privacy" element={<PrivacyV2 />} />
+            <Route path="/terms" element={<TermsV2 />} />
+            {/* Old govcon site at /gov (optional) */}
+            <Route path="/gov" element={<Index />} />
+            <Route path="/gov/privacy" element={<Privacy />} />
+            <Route path="/gov/terms" element={<Terms />} />
             <Route path="/services/hoa" element={<HOAServices />} />
             <Route path="/services/apartments" element={<ApartmentServices />} />
             <Route path="/services/retail" element={<RetailServices />} />
             <Route path="/services/logistics" element={<LogisticsServices />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/terms" element={<Terms />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -51,17 +51,17 @@ export function HeroV2() {
             </a>
           </div>
 
-          <div className="flex flex-wrap gap-6 text-white/90 text-base font-medium animate-fade-in" style={{ animationDelay: "0.4s" }}>
+          <div className="flex flex-wrap gap-6 text-base font-medium text-primary animate-fade-in" style={{ animationDelay: "0.4s" }}>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-white" />
+              <span className="w-2 h-2 rounded-full shrink-0 bg-primary" />
               <span>Technical & Operational Advisory</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-white" />
+              <span className="w-2 h-2 rounded-full shrink-0 bg-primary" />
               <span>Compliance & Risk</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-white" />
+              <span className="w-2 h-2 rounded-full shrink-0 bg-primary" />
               <span>North Texas & Northern New Jersey</span>
             </div>
           </div>

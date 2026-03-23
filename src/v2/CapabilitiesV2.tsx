@@ -33,7 +33,7 @@ export function CapabilitiesV2() {
             Technical Expertise & Operational Excellence
           </h2>
           <p className="text-lg text-muted-foreground">
-            We deliver mission-critical support through a systems-engineering approach—translating complex requirements into clear, executable outcomes.
+            We deliver mission-critical support through a systems-engineering approach translating complex requirements into clear, executable outcomes.
           </p>
         </div>
 

@@ -14,7 +14,7 @@ const navigation = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === "/";
+  const isHome = location.pathname === "/gov";
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -31,7 +31,7 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <nav className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8" aria-label="Main navigation">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/gov" className="flex items-center gap-2">
           <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
             <span className="text-primary-foreground font-bold text-lg">MF</span>
           </div>
@@ -56,7 +56,7 @@ export function Header() {
             ) : item.scrollState ? (
               <Link
                 key={item.name}
-                to="/"
+                to="/gov"
                 state={{ scrollTo: item.scrollState }}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
@@ -128,7 +128,7 @@ export function Header() {
               ) : item.scrollState ? (
                 <Link
                   key={item.name}
-                  to="/"
+                  to="/gov"
                   state={{ scrollTo: item.scrollState }}
                   className="block text-base font-medium text-muted-foreground hover:text-foreground"
                   onClick={() => setMobileMenuOpen(false)}

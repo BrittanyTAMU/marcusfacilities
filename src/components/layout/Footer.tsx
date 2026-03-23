@@ -17,7 +17,7 @@ const services = [
 export function Footer() {
   const currentYear = new Date().getFullYear();
   const location = useLocation();
-  const isHome = location.pathname === "/";
+  const isHome = location.pathname === "/gov";
 
   return (
     <footer className="bg-primary text-primary-foreground">
@@ -82,7 +82,7 @@ export function Footer() {
                     </a>
                   ) : (
                     <Link
-                      to="/"
+                      to="/gov"
                       state={{ scrollTo: service.scrollId }}
                       className="text-base text-primary-foreground hover:text-accent transition-colors"
                     >
@@ -127,13 +127,13 @@ export function Footer() {
             </p>
             <div className="flex gap-6">
               <Link
-                to="/privacy"
+                to="/gov/privacy"
                 className="text-base text-primary-foreground/90 hover:text-accent transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link
-                to="/terms"
+                to="/gov/terms"
                 className="text-base text-primary-foreground/90 hover:text-accent transition-colors"
               >
                 Terms of Service

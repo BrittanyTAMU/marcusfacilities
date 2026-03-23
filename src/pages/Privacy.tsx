@@ -18,7 +18,7 @@ export default function Privacy() {
       <Header />
       <main className="min-h-screen pt-24 pb-16">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
-          <Link to="/" className="text-sm text-foreground/70 hover:text-foreground mb-6 inline-block">
+          <Link to="/gov" className="text-sm text-foreground/70 hover:text-foreground mb-6 inline-block">
             ← Back to Home
           </Link>
 

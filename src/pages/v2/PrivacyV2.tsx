@@ -12,13 +12,13 @@ export default function PrivacyV2() {
       <Helmet>
         <title>Privacy Policy | Marcus Facilities</title>
         <meta name="description" content="Privacy Policy for Marcus Facilities. How we collect, use, and protect your information." />
-        <link rel="canonical" href="https://marcusfacilities.com/#/v2/privacy" />
+        <link rel="canonical" href="https://marcusfacilities.com/#/privacy" />
       </Helmet>
 
       <HeaderV2 />
       <main className="min-h-screen pt-24 pb-16">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
-          <Link to="/v2" className="text-sm text-foreground/70 hover:text-foreground mb-6 inline-block">
+          <Link to="/" className="text-sm text-foreground/70 hover:text-foreground mb-6 inline-block">
             ← Back to Home
           </Link>
 

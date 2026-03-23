@@ -7,7 +7,7 @@ const serviceAreas = ["North Texas (DFW Metroplex)", "Northern New Jersey"];
 export function FooterV2() {
   const currentYear = new Date().getFullYear();
   const location = useLocation();
-  const isHome = location.pathname === "/v2";
+  const isHome = location.pathname === "/";
 
   return (
     <footer className="bg-primary text-primary-foreground">
@@ -25,7 +25,7 @@ export function FooterV2() {
             </p>
             <a
               href="mailto:sales@marcusfacilities.com"
-              className="flex items-center gap-2 text-base text-primary-foreground hover:text-accent transition-colors"
+              className="flex items-center gap-2 text-base text-primary-foreground hover:text-black transition-colors"
             >
               <Mail className="w-5 h-5" />
               sales@marcusfacilities.com
@@ -55,22 +55,22 @@ export function FooterV2() {
                       e.preventDefault();
                       scrollToSection("#capabilities");
                     }}
-                    className="text-primary-foreground/90 hover:text-accent transition-colors cursor-pointer"
+                    className="text-primary-foreground/90 hover:text-black transition-colors cursor-pointer"
                   >
                     Capabilities
                   </a>
                 ) : (
                   <Link
-                    to="/v2"
+                    to="/"
                     state={{ scrollTo: "capabilities" }}
-                    className="text-primary-foreground/90 hover:text-accent transition-colors"
+                    className="text-primary-foreground/90 hover:text-black transition-colors"
                   >
                     Capabilities
                   </Link>
                 )}
               </li>
               <li>
-                <Link to="/v2/about" className="text-primary-foreground/90 hover:text-accent transition-colors">
+                <Link to="/about" className="text-primary-foreground/90 hover:text-black transition-colors">
                   About Us
                 </Link>
               </li>
@@ -82,15 +82,15 @@ export function FooterV2() {
                       e.preventDefault();
                       scrollToSection("#contact");
                     }}
-                    className="text-primary-foreground/90 hover:text-accent transition-colors cursor-pointer"
+                    className="text-primary-foreground/90 hover:text-black transition-colors cursor-pointer"
                   >
                     Request for Information
                   </a>
                 ) : (
                   <Link
-                    to="/v2"
+                    to="/"
                     state={{ scrollTo: "contact" }}
-                    className="text-primary-foreground/90 hover:text-accent transition-colors"
+                    className="text-primary-foreground/90 hover:text-black transition-colors"
                   >
                     Request for Information
                   </Link>
@@ -114,15 +114,15 @@ export function FooterV2() {
                   e.preventDefault();
                   scrollToSection("#contact");
                 }}
-                className="text-sm font-medium text-primary-foreground hover:text-accent transition-colors underline cursor-pointer"
+                className="text-sm font-medium text-primary-foreground hover:text-black transition-colors underline cursor-pointer"
               >
                 Request capability information
               </a>
             ) : (
               <Link
-                to="/v2"
+                to="/"
                 state={{ scrollTo: "contact" }}
-                className="text-sm font-medium text-primary-foreground hover:text-accent transition-colors underline"
+                className="text-sm font-medium text-primary-foreground hover:text-black transition-colors underline"
               >
                 Request capability information
               </Link>
@@ -138,10 +138,10 @@ export function FooterV2() {
               © {currentYear} Marcus Facilities LLC. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <Link to="/v2/privacy" className="text-primary-foreground/90 hover:text-accent transition-colors">
+              <Link to="/privacy" className="text-primary-foreground/90 hover:text-black transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/v2/terms" className="text-primary-foreground/90 hover:text-accent transition-colors">
+              <Link to="/terms" className="text-primary-foreground/90 hover:text-black transition-colors">
                 Terms of Service
               </Link>
             </div>

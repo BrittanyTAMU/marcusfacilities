@@ -12,7 +12,7 @@ export default function AboutV2() {
           name="description"
           content="Marcus Facilities is led by a 3x engineer and Texas A&M alumna. Minority woman-owned management consulting with a systems-engineering approach."
         />
-        <link rel="canonical" href="https://marcusfacilities.com/#/v2/about" />
+        <link rel="canonical" href="https://marcusfacilities.com/#/about" />
       </Helmet>
 
       <HeaderV2 />

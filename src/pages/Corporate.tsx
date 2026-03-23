@@ -29,7 +29,7 @@ export default function Corporate() {
           content="Management consulting and technical operations. Empowering organizations through technical expertise, operational excellence, and mission-critical support. North Texas and Northern New Jersey."
         />
         <meta name="keywords" content="management consulting, technical operations, compliance, infrastructure, Texas, New Jersey" />
-        <link rel="canonical" href="https://marcusfacilities.com/#/v2" />
+        <link rel="canonical" href="https://marcusfacilities.com/" />
       </Helmet>
       <HeaderV2 />
       <main>

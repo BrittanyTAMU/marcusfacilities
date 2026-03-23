@@ -6,14 +6,14 @@ import { scrollToSection } from "@/lib/scroll";
 
 const navigation = [
   { name: "Capabilities", href: "#capabilities", scrollTo: "capabilities" },
-  { name: "About", href: "/v2/about", isPage: true },
+  { name: "About", href: "/about", isPage: true },
   { name: "Contact", href: "#contact", scrollTo: "contact" },
 ];
 
 export function HeaderV2() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === "/v2";
+  const isHome = location.pathname === "/";
 
   const handleScrollClick = (e: React.MouseEvent, target: string) => {
     e.preventDefault();
@@ -24,7 +24,7 @@ export function HeaderV2() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <nav className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8" aria-label="Main navigation">
-        <Link to="/v2" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
             <span className="text-primary-foreground font-bold text-lg">MF</span>
           </div>
@@ -57,7 +57,7 @@ export function HeaderV2() {
             ) : (
               <Link
                 key={item.name}
-                to="/v2"
+                to="/"
                 state={{ scrollTo: item.scrollTo }}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
@@ -77,7 +77,7 @@ export function HeaderV2() {
             </Button>
           ) : (
             <Button variant="accent" asChild>
-              <Link to="/v2" state={{ scrollTo: "contact" }}>
+              <Link to="/" state={{ scrollTo: "contact" }}>
                 Request for Information
               </Link>
             </Button>
@@ -120,7 +120,7 @@ export function HeaderV2() {
               ) : (
                 <Link
                   key={item.name}
-                  to="/v2"
+                  to="/"
                   state={{ scrollTo: item.scrollTo }}
                   className="block text-base font-medium text-muted-foreground hover:text-foreground"
                   onClick={() => setMobileMenuOpen(false)}
@@ -138,7 +138,7 @@ export function HeaderV2() {
                 </Button>
               ) : (
                 <Button variant="accent" className="w-full" asChild>
-                  <Link to="/v2" state={{ scrollTo: "contact" }}>
+                  <Link to="/" state={{ scrollTo: "contact" }}>
                     Request for Information
                   </Link>
                 </Button>

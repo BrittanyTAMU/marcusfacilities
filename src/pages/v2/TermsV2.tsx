@@ -12,13 +12,13 @@ export default function TermsV2() {
       <Helmet>
         <title>Terms of Service | Marcus Facilities</title>
         <meta name="description" content="Terms of Service for Marcus Facilities. Acceptance of terms and legal information." />
-        <link rel="canonical" href="https://marcusfacilities.com/#/v2/terms" />
+        <link rel="canonical" href="https://marcusfacilities.com/#/terms" />
       </Helmet>
 
       <HeaderV2 />
       <main className="min-h-screen pt-24 pb-16">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
-          <Link to="/v2" className="text-sm text-foreground/70 hover:text-foreground mb-6 inline-block">
+          <Link to="/" className="text-sm text-foreground/70 hover:text-foreground mb-6 inline-block">
             ← Back to Home
           </Link>
 
