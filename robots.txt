@@ -1,14 +1,9 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 User-agent: *
 Allow: /
+
+# Prefer career marketing pages; discourage legacy freeze/gov URLs
+Disallow: /#/gov
+Disallow: /#/services/
+Disallow: /#/consulting
+
+Sitemap: https://marcusfacilities.com/sitemap.xml
