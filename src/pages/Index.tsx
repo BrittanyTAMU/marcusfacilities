@@ -25,38 +25,15 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Marcus Facilities | Government Contracting Services | Facilities & Logistics</title>
+        <title>Marcus Facilities</title>
+        <meta name="robots" content="noindex, nofollow" />
         <meta
           name="description"
-          content="Professional facilities operations, logistics, environmental services, and compliance support for government agencies and prime contractors. NAICS 561210. Serving North Texas and Northern New Jersey."
+          content="Marcus Facilities"
         />
-        <meta
-          name="keywords"
-          content="government contracting, facilities support services, NAICS 561210, logistics services, environmental services, compliance support, prime contractor, subcontractor, DFW metroplex, Northern New Jersey"
-        />
-        <link rel="canonical" href="https://marcusfacilities.com" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Marcus Facilities | Government Contracting Services" />
-        <meta property="og:description" content="Trusted facilities operations, logistics, environmental services, and compliance support for government agencies and prime contractors." />
-        <meta property="og:type" content="website" />
-        
-        {/* Organization Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Marcus Facilities",
-            "description": "Professional facilities operations, logistics, environmental services, and compliance support for government contracting",
-            "url": "https://marcusfacilities.com",
-            "email": "sales@marcusfacilities.com",
-            "areaServed": [
-              { "@type": "City", "name": "Dallas-Fort Worth" },
-              { "@type": "City", "name": "Northern New Jersey" }
-            ],
-            "serviceType": ["Facilities Operations", "Logistics & Transport", "Environmental Services", "Compliance & Support"]
-          })}
-        </script>
+        <meta name="keywords" content="" />
+        <meta property="og:title" content="Marcus Facilities" />
+        <meta property="og:description" content="Marcus Facilities" />
       </Helmet>
 
       <Header />

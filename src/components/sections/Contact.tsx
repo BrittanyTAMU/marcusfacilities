@@ -12,6 +12,11 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from "@emailjs/browser";
+import {
+  EMAILJS_PUBLIC_KEY,
+  EMAILJS_SERVICE_ID,
+  EMAILJS_TEMPLATE_ID,
+} from "@/lib/emailjs";
 
 const REASON_OPTIONS = [
   "Logistics & Postal Operations (CDS/HCR)",
@@ -64,20 +69,10 @@ export function Contact() {
       return;
     }
 
-    // EmailJS configuration
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "";
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "";
-
-    if (!serviceId || !templateId || !publicKey) {
-      toast({
-        title: "Configuration Error",
-        description: "Email service is not configured. Please contact support directly.",
-        variant: "destructive",
-      });
-      setIsSubmitting(false);
-      return;
-    }
+    // EmailJS configuration (public client keys — see src/lib/emailjs.ts)
+    const serviceId = EMAILJS_SERVICE_ID;
+    const templateId = EMAILJS_TEMPLATE_ID;
+    const publicKey = EMAILJS_PUBLIC_KEY;
 
     try {
       const templateParams = {
@@ -91,7 +86,7 @@ export function Contact() {
         reply_to: formData.email,
       };
 
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      await emailjs.send(serviceId, templateId, templateParams, { publicKey });
 
       setIsSubmitted(true);
       toast({

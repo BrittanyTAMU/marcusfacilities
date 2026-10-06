@@ -12,6 +12,11 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from "@emailjs/browser";
+import {
+  EMAILJS_PUBLIC_KEY,
+  EMAILJS_SERVICE_ID,
+  EMAILJS_TEMPLATE_ID,
+} from "@/lib/emailjs";
 
 const INQUIRY_OPTIONS = [
   "Strategic Advisory & Consulting",
@@ -58,31 +63,22 @@ export function ContactV2() {
       return;
     }
 
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "";
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "";
-
-    if (!serviceId || !templateId || !publicKey) {
-      toast({
-        title: "Configuration Error",
-        description: "Email service is not configured. Please contact us directly.",
-        variant: "destructive",
-      });
-      setIsSubmitting(false);
-      return;
-    }
-
     try {
-      await emailjs.send(serviceId, templateId, {
-        from_name: formData.name,
-        from_email: formData.email,
-        phone: formData.phone || "Not provided",
-        company: formData.company || "Not provided",
-        department: "Not provided",
-        reason_for_inquiry: formData.inquiryType,
-        message: formData.message || "No message provided",
-        reply_to: formData.email,
-      });
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone || "Not provided",
+          company: formData.company || "Not provided",
+          department: "Not provided",
+          reason_for_inquiry: formData.inquiryType,
+          message: formData.message || "No message provided",
+          reply_to: formData.email,
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
 
       setIsSubmitted(true);
       toast({

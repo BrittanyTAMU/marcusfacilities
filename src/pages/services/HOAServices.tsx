@@ -28,14 +28,16 @@ export default function HOAServices() {
   return (
     <>
       <Helmet>
-        <title>HOA Ice Prevention Services Texas | Marcus Facilities</title>
+        
+        <meta name="robots" content="noindex, nofollow" />
+<title>Marcus Facilities</title>
         <meta
           name="description"
-          content="Professional freeze-event safety and ice control for Texas HOAs and community associations. Pre-treatment, emergency response, and liability documentation for Dallas-Fort Worth."
+          content="Marcus Facilities"
         />
         <meta
           name="keywords"
-          content="HOA ice prevention Dallas-Fort Worth, community freeze safety DFW, HOA snow and ice service Texas, subdivision ice control, HOA liability protection freeze"
+          content=""
         />
         <link rel="canonical" href="https://marcusfacilities.com/services/hoa" />
         

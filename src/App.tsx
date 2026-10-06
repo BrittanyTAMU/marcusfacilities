@@ -4,6 +4,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import CareerHome from "./pages/CareerHome";
+import CareerAbout from "./pages/CareerAbout";
+import Start from "./pages/Start";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import Index from "./pages/Index";
 import Corporate from "./pages/Corporate";
 import AboutV2 from "./pages/v2/AboutV2";
@@ -27,12 +32,20 @@ const App = () => (
         <Sonner />
         <HashRouter>
           <Routes>
-            {/* V2 (corporate) is the main live site at / */}
-            <Route path="/" element={<Corporate />} />
-            <Route path="/about" element={<AboutV2 />} />
+            {/* Marketing site */}
+            <Route path="/" element={<CareerHome />} />
+            <Route path="/about" element={<CareerAbout />} />
             <Route path="/privacy" element={<PrivacyV2 />} />
             <Route path="/terms" element={<TermsV2 />} />
-            {/* Old govcon site at /gov (optional) */}
+
+            {/* Platform entry (same domain) */}
+            <Route path="/start" element={<Start />} />
+            <Route path="/start/signin" element={<SignIn />} />
+            <Route path="/start/signup" element={<SignUp />} />
+
+            {/* Legacy / archive — noindex in those pages */}
+            <Route path="/consulting" element={<Corporate />} />
+            <Route path="/consulting/about" element={<AboutV2 />} />
             <Route path="/gov" element={<Index />} />
             <Route path="/gov/privacy" element={<Privacy />} />
             <Route path="/gov/terms" element={<Terms />} />
@@ -40,7 +53,7 @@ const App = () => (
             <Route path="/services/apartments" element={<ApartmentServices />} />
             <Route path="/services/retail" element={<RetailServices />} />
             <Route path="/services/logistics" element={<LogisticsServices />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </HashRouter>

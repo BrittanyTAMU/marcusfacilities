@@ -15,8 +15,8 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-secondary hover:text-secondary-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        // CTA accent button - safety orange for conversions
-        accent: "bg-accent text-accent-foreground hover:bg-accent/90 shadow-md hover:shadow-lg",
+        // Coral CTA
+        accent: "bg-accent text-accent-foreground hover:bg-accent/90 shadow-md hover:shadow-lg focus-visible:ring-accent",
         // Hero buttons - for dark backgrounds
         hero: "bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg hover:shadow-xl font-semibold",
         heroOutline: "border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-medium",

@@ -28,14 +28,16 @@ export default function LogisticsServices() {
   return (
     <>
       <Helmet>
-        <title>Industrial Ice Prevention Services Texas | Marcus Facilities</title>
+        
+        <meta name="robots" content="noindex, nofollow" />
+<title>Marcus Facilities</title>
         <meta
           name="description"
-          content="Keep warehouses, distribution centers, and logistics hubs operational during Texas freeze events. Priority SLA, 24/7 response, loading dock ice control. Dallas-Fort Worth."
+          content="Marcus Facilities"
         />
         <meta
           name="keywords"
-          content="industrial ice prevention Texas, warehouse freeze safety Dallas-Fort Worth, logistics hub de-icing DFW, distribution center ice control, loading dock freeze protection"
+          content=""
         />
         <link rel="canonical" href="https://marcusfacilities.com/services/logistics" />
       </Helmet>

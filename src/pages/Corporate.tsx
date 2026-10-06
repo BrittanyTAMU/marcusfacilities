@@ -23,6 +23,7 @@ export default function Corporate() {
   return (
     <>
       <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
         <title>Marcus Facilities | Precision Consulting for Complex Infrastructure</title>
         <meta
           name="description"
