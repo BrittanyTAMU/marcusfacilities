@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Mail } from "lucide-react";
 import { scrollToSection } from "@/lib/scroll";
 import { GET_STARTED_PATH } from "./config";
+import { HELP_LINKS } from "./help-links";
 
 export function FooterCareer() {
   const year = new Date().getFullYear();
@@ -10,7 +11,7 @@ export function FooterCareer() {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 lg:px-8 py-14">
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
             <span className="font-serif text-2xl font-bold tracking-wide block">MARCUS</span>
             <span className="text-sm text-primary-foreground/80">Job Search Wingman</span>
@@ -73,10 +74,25 @@ export function FooterCareer() {
                 </Link>
               </li>
               <li>
-                <Link to={GET_STARTED_PATH} className="hover:text-accent transition-colors">
+                <a href={GET_STARTED_PATH} className="hover:text-accent transition-colors">
                   Get Started
-                </Link>
+                </a>
               </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-4 text-sm uppercase tracking-wider text-primary-foreground/70">
+              Who we help
+            </h4>
+            <ul className="space-y-2 text-primary-foreground/90 text-sm">
+              {HELP_LINKS.map((item) => (
+                <li key={item.href}>
+                  <a href={item.href} className="hover:text-accent transition-colors">
+                    {item.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 

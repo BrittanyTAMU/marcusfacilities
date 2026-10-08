@@ -1,6 +1,5 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { GET_STARTED_PATH } from "./config";
 
 const outcomes = [
@@ -34,10 +33,10 @@ export function FinalCtaCareer() {
           We&apos;ll help you run the search.
         </h2>
         <Button variant="accent" size="lg" className="rounded-full px-8 text-base mb-10" asChild>
-          <Link to={GET_STARTED_PATH}>
+          <a href={GET_STARTED_PATH}>
             Get Started
             <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />
-          </Link>
+          </a>
         </Button>
 
         <ul className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 mb-10">

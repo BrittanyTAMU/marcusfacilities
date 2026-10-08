@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { scrollToSection } from "@/lib/scroll";
 import { GET_STARTED_PATH } from "./config";
+import { HELP_LINKS } from "./help-links";
 
 const navigation = [
   { name: "How It Works", to: "/", scrollTo: "how-it-works" as string | null },
@@ -14,6 +15,7 @@ const navigation = [
 
 export function HeaderCareer() {
   const [open, setOpen] = useState(false);
+  const [helpOpen, setHelpOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
 
@@ -30,11 +32,14 @@ export function HeaderCareer() {
         className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8"
         aria-label="Main navigation"
       >
-        <Link to="/" className="group" onClick={() => setOpen(false)}>
-          <span className="font-serif text-2xl font-bold tracking-wide text-foreground block leading-none">
-            MARCUS
+        <Link to="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
+          <img src="/marcus-oauth-logo.png" width="40" height="40" alt="" />
+          <span>
+            <span className="font-serif text-2xl font-bold tracking-wide text-foreground block leading-none">
+              MARCUS
+            </span>
+            <span className="text-xs text-muted-foreground tracking-wide">Marcus Reemployment</span>
           </span>
-          <span className="text-xs text-muted-foreground tracking-wide">Job Search Wingman</span>
         </Link>
 
         <div className="hidden lg:flex items-center gap-8">
@@ -81,11 +86,38 @@ export function HeaderCareer() {
               </Link>
             );
           })}
+          <div className="relative">
+            <button
+              type="button"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              aria-expanded={helpOpen}
+              aria-controls="who-we-help-menu"
+              onClick={() => setHelpOpen((value) => !value)}
+            >
+              Who we help
+            </button>
+            {helpOpen ? (
+              <div
+                id="who-we-help-menu"
+                className="absolute left-0 top-full z-50 mt-3 w-64 rounded-xl border border-border bg-background p-2 shadow-lg"
+              >
+                {HELP_LINKS.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="block rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+            ) : null}
+          </div>
         </div>
 
         <div className="hidden lg:block">
           <Button variant="accent" className="rounded-full px-6" asChild>
-            <Link to={GET_STARTED_PATH}>Get Started</Link>
+            <a href={GET_STARTED_PATH}>Get Started</a>
           </Button>
         </div>
 
@@ -139,10 +171,21 @@ export function HeaderCareer() {
               </Link>
             );
           })}
+          <p className="pt-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Who we help</p>
+          {HELP_LINKS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="block text-base font-medium text-muted-foreground"
+              onClick={() => setOpen(false)}
+            >
+              {item.name}
+            </a>
+          ))}
           <Button variant="accent" className="w-full rounded-full" asChild>
-            <Link to={GET_STARTED_PATH} onClick={() => setOpen(false)}>
+            <a href={GET_STARTED_PATH} onClick={() => setOpen(false)}>
               Get Started
-            </Link>
+            </a>
           </Button>
         </div>
       )}

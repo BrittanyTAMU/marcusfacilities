@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from "@emailjs/browser";
-import { Link } from "react-router-dom";
 import { GET_STARTED_PATH } from "./config";
 import {
   EMAILJS_PUBLIC_KEY,
@@ -76,7 +75,7 @@ export function ContactCareer() {
               <strong className="text-foreground font-semibold">Pricing is shown after you sign up.</strong>
             </p>
             <Button variant="accent" className="rounded-full px-6 mb-6" asChild>
-              <Link to={GET_STARTED_PATH}>Get Started</Link>
+              <a href={GET_STARTED_PATH}>Get Started</a>
             </Button>
             <div>
               <a

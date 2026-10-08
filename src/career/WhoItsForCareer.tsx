@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { GET_STARTED_PATH } from "./config";
 
 const audiences = [
@@ -39,7 +38,7 @@ export function WhoItsForCareer() {
           need someone in your corner. We&apos;ll be there.
         </p>
         <Button size="lg" variant="accent" asChild>
-          <Link to={GET_STARTED_PATH}>Get Started</Link>
+          <a href={GET_STARTED_PATH}>Get Started</a>
         </Button>
       </div>
     </section>

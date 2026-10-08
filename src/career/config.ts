@@ -1,5 +1,4 @@
 /**
- * Get Started stays on the static marketing site (GitHub Pages).
- * RecruiterPlatform is a separate dynamic app — not linked from this repo.
+ * Get Started opens the Vercel app. The marketing site stays on GitHub Pages.
  */
-export const GET_STARTED_PATH = "/start";
+export const GET_STARTED_PATH = "https://app.marcusfacilities.com/login";

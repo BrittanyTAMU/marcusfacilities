@@ -1,6 +1,5 @@
 import { ArrowRight, Briefcase, GraduationCap, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { GET_STARTED_PATH } from "./config";
 import { PlatformPreview } from "./PlatformPreview";
 
@@ -27,10 +26,10 @@ export function HeroCareer() {
               your life and crush the interviews.
             </p>
             <Button variant="accent" size="lg" className="rounded-full px-8 text-base" asChild>
-              <Link to={GET_STARTED_PATH}>
+              <a href={GET_STARTED_PATH}>
                 Get Started
                 <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />
-              </Link>
+              </a>
             </Button>
 
             <ul className="mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-4 sm:gap-6" aria-label="Who it's for">

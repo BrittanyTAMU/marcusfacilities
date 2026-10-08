@@ -1,6 +1,5 @@
 import { GraduationCap, Cpu, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { GET_STARTED_PATH } from "./config";
 
 export function AboutCareer() {
@@ -47,7 +46,7 @@ export function AboutCareer() {
         </div>
 
         <Button size="lg" variant="accent" asChild>
-          <Link to={GET_STARTED_PATH}>Work with me</Link>
+          <a href={GET_STARTED_PATH}>Work with me</a>
         </Button>
       </div>
     </section>

@@ -1,14 +1,19 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { HeaderCareer } from "@/career/HeaderCareer";
 import { FooterCareer } from "@/career/FooterCareer";
 import { Button } from "@/components/ui/button";
+import { GET_STARTED_PATH } from "@/career/config";
 
 /**
- * Static Get Started gate on the marketing site.
- * Platform auth lives in a separate app — not wired here.
+ * Old Get Started URL. Sends visitors to the Vercel app.
  */
 export default function Start() {
+  useEffect(() => {
+    window.location.replace(GET_STARTED_PATH);
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -36,9 +41,7 @@ export default function Start() {
             </p>
             <div className="flex flex-col gap-3">
               <Button variant="accent" size="lg" className="w-full rounded-full" asChild>
-                <a href="mailto:sales@marcusfacilities.com?subject=Get%20started%20with%20MARCUS">
-                  Email to get started
-                </a>
+                <a href={GET_STARTED_PATH}>Continue to the platform</a>
               </Button>
               <Button variant="outline" size="lg" className="w-full rounded-full" asChild>
                 <Link to="/" state={{ scrollTo: "contact" }}>
