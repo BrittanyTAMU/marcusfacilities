@@ -105,6 +105,15 @@ a { color: var(--green); }
 
 .prose { max-width: 42rem; }
 
+.hero-figure { margin: 0 0 1.25rem; }
+
+.hero-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+}
+
 .eyebrow {
   margin: 0;
   font-size: 0.75rem;

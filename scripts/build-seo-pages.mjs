@@ -7,6 +7,45 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..", "public");
 const site = "https://www.marcusfacilities.com";
 const start = "https://app.marcusfacilities.com/login";
 
+const pageImages = {
+  "job-search-after-layoff": {
+    src: "/help/layoff.jpg",
+    alt: "A person at a kitchen table calmly reviewing a laptop while starting a job search after a layoff.",
+  },
+  "job-search-while-on-a-pip": {
+    src: "/help/pip.jpg",
+    alt: "A professional at an office desk quietly planning a job search while still employed.",
+  },
+  "find-a-second-job": {
+    src: "/help/second-job.jpg",
+    alt: "A person at home in the evening using a laptop to look for extra income after work.",
+  },
+  "job-search-help-for-veterans": {
+    src: "/help/veterans.jpg",
+    alt: "An adult in business-casual clothes organizing a resume at a desk for a civilian job search.",
+  },
+  "outplacement-services": {
+    src: "/help/outplacement.jpg",
+    alt: "Two professionals in a bright conference room discussing support for employees after a layoff.",
+  },
+  "layoff-warn-outplacement": {
+    src: "/help/warn.jpg",
+    alt: "Coworkers in a bright office listening during a calm conversation about a workforce change.",
+  },
+  "workforce-development-services": {
+    src: "/help/workforce.jpg",
+    alt: "An advisor and a job seeker working together at a community-center table with a laptop.",
+  },
+  "sponsored-job-search-services": {
+    src: "/help/sponsors.jpg",
+    alt: "Two adults at a kitchen table, one helping the other prepare for a job search.",
+  },
+  faq: {
+    src: "/help/faq.jpg",
+    alt: "A person at a bright desk with a laptop and notebook, pausing over a job-search question.",
+  },
+};
+
 const nav = [
   ["Laid off", "/job-search-after-layoff/"],
   ["On a PIP", "/job-search-while-on-a-pip/"],
@@ -84,6 +123,12 @@ function pageHtml(page) {
       return `<a href="${href}"${current}>${esc(label)}</a>`;
     })
     .join("\n          ");
+  const image = pageImages[page.slug];
+  const figure = image
+    ? `<figure class="hero-figure">
+        <img src="${esc(image.src)}" alt="${esc(image.alt)}" width="1200" height="675" />
+      </figure>`
+    : "";
   const lede = (page.lede ?? []).map((item) => `<p class="lede">${inline(item)}</p>`).join("\n      ");
   const topCta = page.cta
     ? `<p class="cta-row"><a class="cta" href="${safeHref(page.cta.href)}">${esc(page.cta.label)}</a></p>`
@@ -137,6 +182,7 @@ function pageHtml(page) {
       <article class="prose">
       <p class="eyebrow">${esc(page.eyebrow)}</p>
       <h1>${inline(page.h1)}</h1>
+      ${figure}
       ${lede}
       ${topCta}
       ${blocks(page.blocks)}

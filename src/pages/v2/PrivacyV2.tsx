@@ -122,16 +122,22 @@ export default function PrivacyV2() {
                 backup, fraud-prevention, and legal-retention requirements.
               </p>
               <p className="mt-3">
-                Marcus does not request Gmail inbox-reading permission for this functionality and does not read, store,
-                or analyze the personal contents of your Gmail inbox. We do not use Gmail data for advertising. You can
-                disconnect Gmail in the platform. You can also revoke Marcus in your Google Account settings under
-                Security and third-party access.
+                The platform connection used to send mail does not request Gmail inbox-reading permission and does not
+                read, store, or analyze the personal contents of a private inbox. We do not use Gmail data for
+                advertising. You can disconnect Gmail in the platform. You can also revoke Marcus in your Google Account
+                settings under Security and third-party access.
+              </p>
+              <p className="mt-3">
+                For Do It for You, use a dedicated job-search mailbox that you own. That mailbox is for job-search
+                communications, not your personal inbox. By authorizing that mailbox, you explicitly authorize Marcus
+                and Workers assigned to your Case to manage job-search communications in it. Assigned Workers may read
+                recruiter and employer replies and manage those threads. Marcus will not use that mailbox for unrelated
+                marketing or unrelated communications.
               </p>
               <p className="mt-3">
                 If Worker-assisted sending is enabled for your Case, you authorize Marcus and Workers assigned to that
-                Case to cause approved job-search outreach to be sent from the Gmail mailbox you connected. Marcus will
-                not use the connected mailbox for unrelated marketing or unrelated communications. You may withdraw this
-                authorization by disabling Worker-assisted sending, disconnecting Gmail, revoking Google’s
+                Case to cause approved job-search outreach to be sent from the mailbox you connected. You may withdraw
+                this authorization by disabling Worker-assisted sending, disconnecting the mailbox, revoking Google’s
                 authorization, or closing the applicable Case, subject to messages already transmitted. Marcus may
                 require an additional confirmation before Worker-assisted sending is enabled.
               </p>

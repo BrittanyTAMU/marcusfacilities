@@ -113,15 +113,20 @@ export default function TermsV2() {
               <h2 className="text-2xl font-semibold mt-8 mb-2">7. Connected Gmail</h2>
               <p>
                 Connecting Gmail is optional. Marcus requests only the Google permissions necessary for the Gmail
-                functionality described in these Terms and the Privacy Policy. Marcus does not request Gmail
-                inbox-reading permission for this functionality and does not read, store, or analyze the personal
-                contents of your Gmail inbox.
+                functionality described in these Terms and the Privacy Policy. The platform connection used to send
+                mail does not request Gmail inbox-reading permission and does not read, store, or analyze the personal
+                contents of a private inbox.
+              </p>
+              <p className="mt-3">
+                For Do It for You, use a dedicated job-search mailbox that you own. By authorizing that mailbox, you
+                explicitly authorize Marcus and Workers assigned to your Case to manage job-search communications in
+                it, including reading recruiter and employer replies and managing those threads. Marcus will not use
+                that mailbox for unrelated marketing or unrelated communications.
               </p>
               <p className="mt-3">
                 If Worker-assisted sending is enabled for your Case, you authorize Marcus and Workers assigned to that
-                Case to cause approved job-search outreach to be sent from the Gmail mailbox you connected. Marcus will
-                not use the connected mailbox for unrelated marketing or unrelated communications. Marcus may require an
-                additional confirmation before Worker-assisted sending is enabled.
+                Case to cause approved job-search outreach to be sent from the mailbox you connected. Marcus may require
+                an additional confirmation before Worker-assisted sending is enabled.
               </p>
               <p className="mt-3">
                 You may withdraw this authorization by disabling Worker-assisted sending, disconnecting Gmail, revoking
