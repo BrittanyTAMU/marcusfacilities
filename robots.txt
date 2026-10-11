@@ -7,9 +7,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-# Prefer career marketing pages; discourage legacy freeze/gov URLs
-Disallow: /#/gov
-Disallow: /#/services/
-Disallow: /#/consulting
-
 Sitemap: https://www.marcusfacilities.com/sitemap.xml

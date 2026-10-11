@@ -103,15 +103,19 @@ a { color: var(--green); }
 
 .wrap { padding-top: 2.5rem; padding-bottom: 4.5rem; }
 
-.prose { max-width: 42rem; }
+.prose { width: 100%; }
 
-.hero-figure { margin: 0 0 1.25rem; }
+.page-figure { margin: 1.75rem 0 1.5rem; }
 
-.hero-figure img {
+.page-figure img {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 1rem;
+}
+
+.page-figure.narrow {
+  max-width: 28rem;
 }
 
 .eyebrow {
@@ -180,7 +184,6 @@ ul { margin: 0.75rem 0 1rem; padding-left: 1.25rem; }
 
 footer {
   margin-top: 2.75rem;
-  max-width: 42rem;
   font-size: 0.95rem;
   color: var(--muted);
 }

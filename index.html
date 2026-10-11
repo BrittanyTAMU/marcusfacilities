@@ -10,17 +10,30 @@
     <meta name="author" content="Marcus Facilities" />
     <meta name="theme-color" content="#F36B4F" />
     <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.marcusfacilities.com/" />
+    <script>
+      (function () {
+        var hash = location.hash || "";
+        if (hash === "#/about" || hash.indexOf("#/about?") === 0 || hash.indexOf("#/about/") === 0) {
+          location.replace("/about/");
+        } else if (hash === "#/privacy" || hash.indexOf("#/privacy?") === 0 || hash.indexOf("#/privacy/") === 0) {
+          location.replace("/privacy/");
+        } else if (hash === "#/terms" || hash.indexOf("#/terms?") === 0 || hash.indexOf("#/terms/") === 0) {
+          location.replace("/terms/");
+        }
+      })();
+    </script>
 
     <!-- Open Graph -->
     <meta property="og:title" content="MARCUS | Job Search Wingman — Keep Your Day Job" />
     <meta property="og:description" content="Your job-search wingman. Keep your day job while we help run the search." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://marcusfacilities.com" />
+    <meta property="og:url" content="https://www.marcusfacilities.com/" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="MARCUS | Job Search Wingman — Keep Your Day Job" />
     <meta name="twitter:description" content="Your job-search wingman. Keep your day job while we help run the search." />
-    <script type="module" crossorigin src="/assets/index-CC0RrGwR.js"></script>
+    <script type="module" crossorigin src="/assets/index-DUDoVDgR.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BRrMlAFQ.css">
   </head>
 
