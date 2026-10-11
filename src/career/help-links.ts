@@ -8,5 +8,6 @@ export const HELP_LINKS = [
   { name: "Layoffs / WARN", href: "/layoff-warn-outplacement/" },
   { name: "Workforce Programs", href: "/workforce-development-services/" },
   { name: "Sponsors / Nonprofits", href: "/sponsored-job-search-services/" },
+  { name: "WARN support", href: "/warn-layoff-support/" },
   { name: "FAQ", href: "/faq/" },
 ] as const;

@@ -3,7 +3,7 @@ import { Cpu, HeartHandshake, Rocket } from "lucide-react";
 const journey = [
   { icon: Cpu, label: "3x Engineer" },
   { icon: HeartHandshake, label: "Job Search Advocate" },
-  { icon: Rocket, label: "Founder, Marcus Facilites LLC" },
+  { icon: Rocket, label: "Founder, Marcus Facilities LLC" },
 ];
 
 export function FounderCareer() {
@@ -27,14 +27,14 @@ export function FounderCareer() {
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Hi, I&apos;m Brittany Washington, a 3x engineer (civil, software, and cloud) and founder of
-                Marcus Facilites LLC. Before building this for other people, I built the process for myself in a hard tech
+                Marcus Facilities LLC. Before building this for other people, I built the process for myself in a hard tech
                 market. Targeted discovery, applications, research, outreach, follow-up, and organization
                 helped me consistently generate interviews, including averaging about four interviews a
                 month in 2025.
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 Most recruiters say they know how hard it is. I was once in your shoes, and my method
-                worked. Then I tested it outside my own industry. It worked there too. That&apos;s Marcus Facilites LLC (Marcus iOS).
+                worked. Then I tested it outside my own industry. It worked there too. That&apos;s Marcus Facilities LLC (Marcus iOS).
               </p>
             </div>
           </div>

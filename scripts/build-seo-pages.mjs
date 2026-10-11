@@ -8,42 +8,85 @@ const site = "https://www.marcusfacilities.com";
 const start = "https://app.marcusfacilities.com/login";
 
 const pageImages = {
-  "job-search-after-layoff": {
-    src: "/help/layoff.jpg",
-    alt: "A person at a kitchen table calmly reviewing a laptop while starting a job search after a layoff.",
-  },
-  "job-search-while-on-a-pip": {
-    src: "/help/pip.jpg",
-    alt: "A professional at an office desk quietly planning a job search while still employed.",
-  },
-  "find-a-second-job": {
-    src: "/help/second-job.jpg",
-    alt: "A person at home in the evening using a laptop to look for extra income after work.",
-  },
-  "job-search-help-for-veterans": {
-    src: "/help/veterans.jpg",
-    alt: "An adult in business-casual clothes organizing a resume at a desk for a civilian job search.",
-  },
-  "outplacement-services": {
-    src: "/help/outplacement.jpg",
-    alt: "Two professionals in a bright conference room discussing support for employees after a layoff.",
-  },
-  "layoff-warn-outplacement": {
-    src: "/help/warn.jpg",
-    alt: "Coworkers in a bright office listening during a calm conversation about a workforce change.",
-  },
-  "workforce-development-services": {
-    src: "/help/workforce.jpg",
-    alt: "An advisor and a job seeker working together at a community-center table with a laptop.",
-  },
-  "sponsored-job-search-services": {
-    src: "/help/sponsors.jpg",
-    alt: "Two adults at a kitchen table, one helping the other prepare for a job search.",
-  },
-  faq: {
-    src: "/help/faq.jpg",
-    alt: "A person at a bright desk with a laptop and notebook, pausing over a job-search question.",
-  },
+  "job-search-after-layoff": [
+    {
+      src: "/help/layoff-stress.jpg",
+      alt: "A stressed person sitting on a couch with their head in their hands, in a messy living room with laundry piled up and mail scattered on the table.",
+      beforeHeading: "What we help with",
+    },
+  ],
+  "job-search-while-on-a-pip": [
+    {
+      src: "/help/pip-office.jpg",
+      alt: "An employee sitting across from a manager in the manager's office, with a tall stack of paperwork on the desk.",
+      beforeHeading: "You can search without your employer knowing.",
+    },
+  ],
+  "find-a-second-job": [
+    {
+      src: "/help/second-job-desk.jpg",
+      alt: "A worker at their main job, stressed behind tall stacks of paperwork and looking like they are missing a deadline.",
+      beforeHeading: "Looking for extra money? Start with what actually fits your life.",
+    },
+    {
+      src: "/help/second-job-night.jpg",
+      alt: "The same worker later at night, still in work clothes, exhausted at a kitchen table with a laptop.",
+      beforeHeading: "Your free time should still be free sometimes.",
+      narrow: true,
+      width: 1200,
+      height: 900,
+    },
+  ],
+  "job-search-help-for-veterans": [
+    {
+      src: "/help/veterans-stress.jpg",
+      alt: "A stressed man sitting alone at a kitchen table, looking worried.",
+      place: "after-h1",
+    },
+  ],
+  "outplacement-services": [
+    {
+      src: "/help/outplacement-meeting.jpg",
+      alt: "An employee in a quiet meeting with two managers, with a cardboard box on the floor beside the chair.",
+      beforeHeading: "Your company pays. The employee gets the support.",
+    },
+    {
+      src: "/help/outplacement-box.jpg",
+      alt: "An employee packing a desk into a cardboard box while coworkers stand in the background.",
+      beforeHeading: "If people have to leave, help them land somewhere else.",
+      narrow: true,
+      width: 1200,
+      height: 900,
+    },
+  ],
+  "layoff-warn-outplacement": [
+    {
+      src: "/help/warn.jpg",
+      alt: "Coworkers in a bright office listening during a calm conversation about a workforce change.",
+      beforeHeading: "Don't wait until the last day.",
+    },
+  ],
+  "workforce-development-services": [
+    {
+      src: "/help/workforce-office.jpg",
+      alt: "A job seeker looking uncertain while sitting across from an advisor in a plain workforce office.",
+      beforeHeading: "Marcus does not replace your workforce program.",
+    },
+  ],
+  "sponsored-job-search-services": [
+    {
+      src: "/help/sponsors-kitchen.jpg",
+      alt: "An older adult helping a stressed younger adult go through bills and a laptop at a cluttered kitchen table.",
+      beforeHeading: "The sponsor pays. The job seeker keeps their own account.",
+    },
+  ],
+  faq: [
+    {
+      src: "/help/faq-question.jpg",
+      alt: "A person paused at a laptop, looking puzzled over a question, with a notebook open beside them.",
+      afterFaq: 4,
+    },
+  ],
 };
 
 const nav = [
@@ -55,6 +98,7 @@ const nav = [
   ["Layoffs / WARN", "/layoff-warn-outplacement/"],
   ["Workforce Programs", "/workforce-development-services/"],
   ["Sponsors / Nonprofits", "/sponsored-job-search-services/"],
+  ["WARN support", "/warn-layoff-support/"],
   ["FAQ", "/faq/"],
 ];
 
@@ -67,7 +111,9 @@ function esc(value) {
 }
 
 function safeHref(href) {
-  return /^(https:\/\/|mailto:)/.test(href) ? esc(href) : "#";
+  if (/^(https:\/\/|mailto:)/.test(href)) return esc(href);
+  if (href.startsWith("/") && !/[\s"'<>]/.test(href)) return esc(href);
+  return "#";
 }
 
 function inline(value) {
@@ -94,16 +140,31 @@ function paragraphs(value) {
   return list.map((item) => `<p>${inline(item)}</p>`).join("\n        ");
 }
 
-function blocks(list) {
+function figureHtml(image) {
+  const narrow = image.narrow ? " narrow" : "";
+  const width = image.width ?? 1200;
+  const height = image.height ?? 675;
+  return `<figure class="page-figure${narrow}">
+        <img src="${esc(image.src)}" alt="${esc(image.alt)}" width="${width}" height="${height}" />
+      </figure>`;
+}
+
+function figuresFor(images, match) {
+  return images.filter(match).map(figureHtml).join("\n      ");
+}
+
+function blocks(list, images = []) {
   return (list ?? [])
     .map((block) => {
-      if (block.h2) return `<h2>${inline(block.h2)}</h2>`;
-      if (block.p) return `<p>${inline(block.p)}</p>`;
-      if (block.ul) return `<ul>${block.ul.map((item) => `<li>${inline(item)}</li>`).join("")}</ul>`;
-      if (block.cta) {
-        return `<p class="cta-row"><a class="cta" href="${safeHref(block.cta.href)}">${esc(block.cta.label)}</a></p>`;
+      const before = block.h2 ? figuresFor(images, (image) => image.beforeHeading === block.h2) : "";
+      let body = "";
+      if (block.h2) body = `<h2>${inline(block.h2)}</h2>`;
+      else if (block.p) body = `<p>${inline(block.p)}</p>`;
+      else if (block.ul) body = `<ul>${block.ul.map((item) => `<li>${inline(item)}</li>`).join("")}</ul>`;
+      else if (block.cta) {
+        body = `<p class="cta-row"><a class="cta" href="${safeHref(block.cta.href)}">${esc(block.cta.label)}</a></p>`;
       }
-      return "";
+      return before ? `${before}\n      ${body}` : body;
     })
     .join("\n      ");
 }
@@ -123,18 +184,18 @@ function pageHtml(page) {
       return `<a href="${href}"${current}>${esc(label)}</a>`;
     })
     .join("\n          ");
-  const image = pageImages[page.slug];
-  const figure = image
-    ? `<figure class="hero-figure">
-        <img src="${esc(image.src)}" alt="${esc(image.alt)}" width="1200" height="675" />
-      </figure>`
-    : "";
+  const images = pageImages[page.slug] ?? [];
+  const leadFigure = figuresFor(images, (image) => image.place === "after-h1");
   const lede = (page.lede ?? []).map((item) => `<p class="lede">${inline(item)}</p>`).join("\n      ");
   const topCta = page.cta
     ? `<p class="cta-row"><a class="cta" href="${safeHref(page.cta.href)}">${esc(page.cta.label)}</a></p>`
     : "";
   const faqs = page.faqs
-    .map(([question, answer]) => `<article class="card"><h3>${inline(question)}</h3>${paragraphs(answer)}</article>`)
+    .map(([question, answer], index) => {
+      const card = `<article class="card"><h3>${inline(question)}</h3>${paragraphs(answer)}</article>`;
+      const after = figuresFor(images, (image) => image.afterFaq === index);
+      return after ? `${card}\n      ${after}` : card;
+    })
     .join("\n      ");
   const schema = {
     "@context": "https://schema.org",
@@ -182,13 +243,13 @@ function pageHtml(page) {
       <article class="prose">
       <p class="eyebrow">${esc(page.eyebrow)}</p>
       <h1>${inline(page.h1)}</h1>
-      ${figure}
+      ${leadFigure}
       ${lede}
       ${topCta}
-      ${blocks(page.blocks)}
+      ${blocks(page.blocks, images)}
       ${page.questionsTitle ? `<h2>${inline(page.questionsTitle)}</h2>` : ""}
       ${faqs}
-      ${blocks(page.after)}
+      ${blocks(page.after, images)}
       <footer>
         <p>Marcus Reemployment is operated by Marcus Facilities LLC. We help with the search. We do not guarantee a job.</p>
         <p><a href="mailto:sales@marcusfacilities.com">sales@marcusfacilities.com</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></p>
@@ -207,6 +268,7 @@ for (const page of pages) {
 }
 
 const sitemapUrls = [`${site}/`, ...pages.map((page) => `${site}/${page.slug}/`), `${site}/privacy/`, `${site}/terms/`];
+const lastmod = "2026-10-10";
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${sitemapUrls
@@ -214,6 +276,7 @@ ${sitemapUrls
     const home = loc === `${site}/`;
     return `  <url>
     <loc>${loc}</loc>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>${home ? "weekly" : "monthly"}</changefreq>
     <priority>${home ? "1.0" : "0.8"}</priority>
   </url>`;

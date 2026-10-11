@@ -1,29 +1,35 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { scrollToSection } from "@/lib/scroll";
 import { GET_STARTED_PATH } from "./config";
 import { HELP_LINKS } from "./help-links";
 
-const navigation = [
-  { name: "How It Works", to: "/", scrollTo: "how-it-works" as string | null },
-  { name: "Platform", to: "/", scrollTo: "platform" as string | null },
-  { name: "About", to: "/about", scrollTo: null as string | null },
-  { name: "Contact", to: "/", scrollTo: "contact" as string | null },
+type NavItem = { name: string; hash?: string; href?: string };
+
+const navigation: NavItem[] = [
+  { name: "How It Works", hash: "how-it-works" },
+  { name: "Platform", hash: "platform" },
+  { name: "About", href: "/about/" },
+  { name: "Contact", href: "/contact/" },
 ];
 
 export function HeaderCareer() {
   const [open, setOpen] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
-  const location = useLocation();
-  const isHome = location.pathname === "/";
 
-  const handleScroll = (e: React.MouseEvent, id: string | null) => {
-    if (!id || !isHome) return;
-    e.preventDefault();
+  const handleScroll = (event: React.MouseEvent, id: string) => {
+    if (window.location.pathname !== "/") return;
+    event.preventDefault();
     scrollToSection(`#${id}`);
     setOpen(false);
+  };
+
+  const itemHref = (item: (typeof navigation)[number]) => {
+    if (item.href) return item.href;
+    const hash = item.hash ?? "";
+    return window.location.pathname === "/" ? `#${hash}` : `/#${hash}`;
   };
 
   return (
@@ -43,49 +49,16 @@ export function HeaderCareer() {
         </Link>
 
         <div className="hidden lg:flex items-center gap-8">
-          {navigation.map((item) => {
-            if ("href" in item && item.href) {
-              return (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {item.name}
-                </a>
-              );
-            }
-            if (item.scrollTo) {
-              return isHome ? (
-                <a
-                  key={item.name}
-                  href={`#${item.scrollTo}`}
-                  onClick={(e) => handleScroll(e, item.scrollTo)}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {item.name}
-                </a>
-              ) : (
-                <Link
-                  key={item.name}
-                  to="/"
-                  state={{ scrollTo: item.scrollTo }}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {item.name}
-                </Link>
-              );
-            }
-            return (
-              <Link
-                key={item.name}
-                to={item.to!}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {item.name}
-              </Link>
-            );
-          })}
+          {navigation.map((item) => (
+            <a
+              key={item.name}
+              href={itemHref(item)}
+              onClick={item.hash ? (event) => handleScroll(event, item.hash as string) : undefined}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {item.name}
+            </a>
+          ))}
           <div className="relative">
             <button
               type="button"
@@ -134,43 +107,16 @@ export function HeaderCareer() {
 
       {open && (
         <div className="lg:hidden border-t border-border bg-background px-4 py-4 space-y-3">
-          {navigation.map((item) => {
-            if ("href" in item && item.href) {
-              return (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="block text-base font-medium text-muted-foreground"
-                  onClick={() => setOpen(false)}
-                >
-                  {item.name}
-                </a>
-              );
-            }
-            if (item.scrollTo && isHome) {
-              return (
-                <a
-                  key={item.name}
-                  href={`#${item.scrollTo}`}
-                  onClick={(e) => handleScroll(e, item.scrollTo)}
-                  className="block text-base font-medium text-muted-foreground"
-                >
-                  {item.name}
-                </a>
-              );
-            }
-            return (
-              <Link
-                key={item.name}
-                to={item.scrollTo ? "/" : item.to!}
-                state={item.scrollTo ? { scrollTo: item.scrollTo } : undefined}
-                onClick={() => setOpen(false)}
-                className="block text-base font-medium text-muted-foreground"
-              >
-                {item.name}
-              </Link>
-            );
-          })}
+          {navigation.map((item) => (
+            <a
+              key={item.name}
+              href={itemHref(item)}
+              onClick={item.hash ? (event) => handleScroll(event, item.hash as string) : () => setOpen(false)}
+              className="block text-base font-medium text-muted-foreground"
+            >
+              {item.name}
+            </a>
+          ))}
           <p className="pt-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Who we help</p>
           {HELP_LINKS.map((item) => (
             <a

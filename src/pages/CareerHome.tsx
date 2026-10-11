@@ -35,7 +35,7 @@ export default function CareerHome() {
           content="Your job-search wingman. Keep your day job while we help find opportunities, manage applications, craft outreach, and keep follow-up on track."
         />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://marcusfacilities.com/" />
+        <link rel="canonical" href="https://www.marcusfacilities.com/" />
       </Helmet>
       <HeaderCareer />
       <main>

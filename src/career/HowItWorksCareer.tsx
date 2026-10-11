@@ -37,7 +37,10 @@ export function HowItWorksCareer() {
             You show up. We help run the search.
           </h2>
           <p className="text-muted-foreground text-lg">
-            A modern, human approach to job search support.
+            A modern, human approach to job search support.{" "}
+            <a href="/apply-to-jobs-for-me/" className="text-foreground underline underline-offset-4 hover:text-accent">
+              Can someone apply for you while you work?
+            </a>
           </p>
         </div>
 
